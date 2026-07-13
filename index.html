@@ -1,79 +1,736 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CUCINIH — Laundry Modern, Bersih & Wangi</title>
-  <meta name="description" content="Laundry modern kiloan, sepatu, tas, dan helm. Antar-jemput gratis, detergen ramah lingkungan, dan tracking via WhatsApp. Grand Launching segera!" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary:   { DEFAULT: '#0EA5E9', light: '#38BDF8', dark: '#0284C7' },
-            accent:    { DEFAULT: '#10B981', light: '#34D399' },
-            highlight: '#F97316',
-            surface:   '#F8FAFC',
-          },
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-          },
-        }
-      }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CUCINIH — Laundry Modern, Bersih & Wangi</title>
+<meta name="description" content="Laundry modern kiloan, sepatu, tas, dan helm. Antar-jemput gratis, detergen ramah lingkungan, tracking via WhatsApp. Grand Launching segera!"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary:   { DEFAULT:'#0EA5E9', light:'#38BDF8', dark:'#0284C7' },
+        accent:    { DEFAULT:'#10B981', light:'#34D399' },
+        highlight: '#F97316',
+        surface:   '#F8FAFC',
+      },
+      fontFamily: { sans: ['Plus Jakarta Sans','Inter','sans-serif'] }
     }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    /* smooth underline nav link */
-    .nav-link::after {
-      content: '';
-      display: block;
-      height: 2px;
-      width: 0;
-      background: #0EA5E9;
-      transition: width .25s ease;
-    }
-    .nav-link:hover::after { width: 100%; }
-
-    /* gradient hero text */
-    .gradient-text {
-      background: linear-gradient(135deg, #0EA5E9 0%, #10B981 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* blob background */
-    .hero-bg {
-      background: radial-gradient(ellipse 80% 60% at 50% -10%, #e0f2fe 0%, transparent 70%),
-                  radial-gradient(ellipse 40% 40% at 90% 80%, #d1fae5 0%, transparent 60%),
-                  #f8fafc;
-    }
-
-    /* card hover lift */
-    .card-lift { transition: transform .2s ease, box-shadow .2s ease; }
-    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(14,165,233,.12); }
-
-    /* FAQ answer transition */
-    .faq-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    .faq-body.open { max-height: 200px; }
-
-    /* tab underline */
-    .tab-btn.active {
-      color: #0EA5E9;
-      border-bottom-color: #0EA5E9;
-    }
-
-    /* pulse badge */
-    @keyframes pulse-ring {
-      0%   { box-shadow: 0 0 0 0 rgba(249,115,22,.4); }
-      70%  { box-shadow: 0 0 0 10px rgba(249,115,22,0); }
-      100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
-    }
-    .pulse-ring { animation: pulse-ring 2s infinite; }
-  </style>
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  .nav-link::after{content:'';display:block;height:2px;width:0;background:#0EA5E9;transition:width .25s}
+  .nav-link:hover::after{width:100%}
+  .gradient-text{background:linear-gradient(135deg,#0EA5E9,#10B981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hero-bg{background:radial-gradient(ellipse 80% 60% at 50% -10%,#e0f2fe,transparent 70%),radial-gradient(ellipse 40% 40% at 90% 80%,#d1fae5,transparent 60%),#F8FAFC}
+  .card-lift{transition:transform .2s,box-shadow .2s}
+  .card-lift:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(14,165,233,.12)}
+  @keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(14,165,233,.4)}70%{box-shadow:0 0 0 10px rgba(14,165,233,0)}100%{box-shadow:0 0 0 0 rgba(14,165,233,0)}}
+  .pulse-ring{animation:pulse-ring 2s infinite}
+  .tab-panel{display:none}.tab-panel.active{display:grid}
+  .tab-btn.active{color:#0EA5E9;border-color:#0EA5E9;background:rgba(14,165,233,.06)}
+  .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .faq-answer.open{max-height:300px}
+</style>
 </head>
 <body class="font-sans bg-surface text-slate-700 antialiased">
+
+<!-- ===== PROMO BANNER ===== -->
+<div id="promoBanner" class="bg-gradient-to-r from-highlight to-orange-400 text-white text-center py-2.5 px-4 text-sm font-semibold relative">
+  🎉 <span class="uppercase tracking-wide">Promo Grand Launching:</span> Diskon 30% untuk Semua Layanan! &nbsp;
+  <a href="#promo" class="underline font-bold hover:no-underline">Lihat Detail →</a>
+  <button onclick="document.getElementById('promoBanner').remove()" aria-label="Tutup" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg leading-none">✕</button>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<header id="navbar" class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-shadow duration-200">
+  <nav class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between h-16">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 font-extrabold text-xl text-slate-800 select-none">
+      <span class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-sm">✦</span>
+      CUCI<span class="text-primary">NIH</span>
+    </a>
+
+    <!-- Desktop Links -->
+    <ul class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-500">
+      <li><a href="#services" class="nav-link pb-0.5 hover:text-primary transition-colors">Layanan</a></li>
+      <li><a href="#pricing"  class="nav-link pb-0.5 hover:text-primary transition-colors">Harga</a></li>
+      <li><a href="#promo"    class="nav-link pb-0.5 hover:text-primary transition-colors">Promo Launching</a></li>
+      <li><a href="#contact"  class="nav-link pb-0.5 hover:text-primary transition-colors">Kontak</a></li>
+    </ul>
+
+    <!-- CTA + Hamburger -->
+    <div class="flex items-center gap-3">
+      <a href="https://wa.me/6281234567890?text=Halo+CUCINIH" target="_blank" rel="noopener"
+         class="hidden md:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.859L.054 23.448a.75.75 0 00.91.908l5.67-1.47A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.708 9.708 0 01-4.95-1.354l-.355-.21-3.664.95.974-3.559-.231-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+        Hubungi Di Sini
+      </a>
+      <button id="menuBtn" aria-label="Menu" aria-expanded="false"
+              class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
+        <svg id="iconOpen"  class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="iconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-5 pb-5 pt-3">
+    <ul class="flex flex-col gap-3 text-sm font-medium text-slate-600 mb-4">
+      <li><a href="#services" onclick="closeNav()" class="block py-1 hover:text-primary">Layanan</a></li>
+      <li><a href="#pricing"  onclick="closeNav()" class="block py-1 hover:text-primary">Harga</a></li>
+      <li><a href="#promo"    onclick="closeNav()" class="block py-1 hover:text-primary">Promo Launching</a></li>
+      <li><a href="#contact"  onclick="closeNav()" class="block py-1 hover:text-primary">Kontak</a></li>
+    </ul>
+    <a href="https://wa.me/6281234567890?text=Halo+CUCINIH" target="_blank" rel="noopener"
+       class="flex items-center justify-center gap-2 bg-primary text-white font-semibold py-2.5 rounded-xl text-sm w-full">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.859L.054 23.448a.75.75 0 00.91.908l5.67-1.47A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.708 9.708 0 01-4.95-1.354l-.355-.21-3.664.95.974-3.559-.231-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+      Hubungi Di Sini
+    </a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero-bg min-h-[90vh] flex items-center pt-6 pb-16" id="hero">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 w-full grid lg:grid-cols-2 gap-12 items-center">
+
+    <!-- Left: Copy -->
+    <div class="text-center lg:text-left">
+      <span class="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold text-xs px-3 py-1.5 rounded-full mb-5 pulse-ring">
+        🚀 Grand Launching Segera!
+      </span>
+      <h1 class="text-4xl sm:text-5xl xl:text-6xl font-extrabold text-slate-800 leading-tight mb-5">
+        Pakaian Bersih<br/>
+        <span class="gradient-text">Tanpa Ribet!</span>
+      </h1>
+      <p class="text-slate-500 text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+        CUCINIH hadir dengan layanan laundry modern —
+        <strong class="text-slate-700">antar-jemput gratis</strong> untuk area sekitar,
+        detergen ramah lingkungan, dan tracking status cucian via
+        <strong class="text-slate-700">WhatsApp</strong>.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8">
+        <a href="#promo"
+           class="inline-flex items-center justify-center gap-2 bg-highlight hover:bg-orange-500 text-white font-bold px-6 py-3.5 rounded-xl transition-colors shadow-lg shadow-orange-200 text-sm">
+          🎁 Lihat Promo Launching
+        </a>
+        <a href="https://wa.me/6281234567890?text=Halo+CUCINIH%2C+saya+mau+tanya+layanan"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border-2 border-primary text-primary font-bold px-6 py-3.5 rounded-xl transition-colors text-sm">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.859L.054 23.448a.75.75 0 00.91.908l5.67-1.47A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.708 9.708 0 01-4.95-1.354l-.355-.21-3.664.95.974-3.559-.231-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+          Hubungi WhatsApp
+        </a>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center lg:justify-start text-xs text-slate-400 font-medium">
+        <span>✅ Antar-jemput gratis</span>
+        <span>✅ Garansi bersih &amp; wangi</span>
+        <span>✅ Tanpa ribet, via WhatsApp</span>
+      </div>
+    </div>
+
+    <!-- Right: Countdown Card -->
+    <div class="flex justify-center lg:justify-end">
+      <div class="bg-white rounded-3xl shadow-xl shadow-slate-200 p-8 w-full max-w-sm border border-slate-100">
+        <p class="text-center text-slate-400 text-xs font-semibold uppercase tracking-widest mb-3">Launching Dalam</p>
+        <div class="grid grid-cols-4 gap-2 mb-5">
+          <div class="bg-surface rounded-2xl p-3 text-center border border-slate-100">
+            <span class="block text-3xl font-extrabold text-primary leading-none" id="cd-days">00</span>
+            <span class="text-xs text-slate-400 font-medium mt-1 block">Hari</span>
+          </div>
+          <div class="bg-surface rounded-2xl p-3 text-center border border-slate-100">
+            <span class="block text-3xl font-extrabold text-primary leading-none" id="cd-hours">00</span>
+            <span class="text-xs text-slate-400 font-medium mt-1 block">Jam</span>
+          </div>
+          <div class="bg-surface rounded-2xl p-3 text-center border border-slate-100">
+            <span class="block text-3xl font-extrabold text-primary leading-none" id="cd-minutes">00</span>
+            <span class="text-xs text-slate-400 font-medium mt-1 block">Menit</span>
+          </div>
+          <div class="bg-surface rounded-2xl p-3 text-center border border-slate-100">
+            <span class="block text-3xl font-extrabold text-primary leading-none" id="cd-seconds">00</span>
+            <span class="text-xs text-slate-400 font-medium mt-1 block">Detik</span>
+          </div>
+        </div>
+        <div class="bg-orange-50 border border-orange-200 rounded-2xl p-4 text-center mb-4">
+          <p class="text-highlight font-bold text-sm mb-1">🎉 Promo Grand Launching</p>
+          <p class="text-slate-600 text-sm">Diskon <strong class="text-highlight text-lg">30%</strong> semua layanan<br/>untuk 50 pelanggan pertama!</p>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div class="bg-surface rounded-xl p-3 border border-slate-100 text-center">
+            <span class="block text-xl font-extrabold text-slate-800">500+</span>
+            <span class="text-xs text-slate-400">Pre-register</span>
+          </div>
+          <div class="bg-surface rounded-xl p-3 border border-slate-100 text-center">
+            <span class="block text-xl font-extrabold text-slate-800">⭐ 4.9</span>
+            <span class="text-xs text-slate-400">Rating Beta</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="py-20 bg-white" id="why">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest">Keunggulan Kami</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mt-2">Kenapa Pilih CUCINIH?</h2>
+      <p class="text-slate-400 mt-3 max-w-xl mx-auto">Bukan sekadar laundry biasa — setiap detail kami rancang untuk kenyamanan dan kebersihan terbaik.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div class="card-lift bg-surface border border-slate-100 rounded-2xl p-6 text-center">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">💧</div>
+        <h3 class="font-bold text-slate-800 mb-2">Air Murni Terfilter</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Menggunakan air yang sudah difiltrasi khusus agar pakaian lebih bersih dan bebas kuman.</p>
+      </div>
+
+      <div class="card-lift bg-surface border border-slate-100 rounded-2xl p-6 text-center">
+        <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">🌿</div>
+        <h3 class="font-bold text-slate-800 mb-2">Detergen Ramah Lingkungan</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Formula bio-degradable, aman untuk kulit sensitif dan tidak merusak lingkungan.</p>
+      </div>
+
+      <div class="card-lift bg-surface border border-slate-100 rounded-2xl p-6 text-center">
+        <div class="w-14 h-14 bg-highlight/10 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">✨</div>
+        <h3 class="font-bold text-slate-800 mb-2">Garansi Bersih &amp; Wangi</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Tidak puas? Kami cuci ulang gratis — tanpa tanda tanya, tanpa syarat tambahan.</p>
+      </div>
+
+      <div class="card-lift bg-surface border border-slate-100 rounded-2xl p-6 text-center">
+        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">📱</div>
+        <h3 class="font-bold text-slate-800 mb-2">Pelacakan via WhatsApp</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Pantau status cucianmu secara real-time langsung dari chat WhatsApp. Tidak perlu install app apapun.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES & PRICING ===== -->
+<section class="py-20 bg-surface" id="services">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest">Layanan &amp; Harga</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mt-2" id="pricing">Semua Kebutuhan Cucimu</h2>
+      <p class="text-slate-400 mt-3 max-w-xl mx-auto">Pilih layanan yang kamu butuhkan — harga transparan, tanpa biaya tersembunyi.</p>
+    </div>
+
+    <!-- Tab Buttons -->
+    <div class="flex gap-2 justify-center flex-wrap mb-10">
+      <button onclick="showTab('kiloan')" id="tab-kiloan"
+        class="tab-btn active px-5 py-2.5 rounded-xl font-semibold text-sm border-2 border-primary text-primary bg-primary/6 transition-all">
+        👕 Cuci Kiloan
+      </button>
+      <button onclick="showTab('sepatu')" id="tab-sepatu"
+        class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm border-2 border-slate-200 text-slate-500 transition-all hover:border-primary hover:text-primary">
+        👟 Cuci Sepatu
+      </button>
+      <button onclick="showTab('deepclean')" id="tab-deepclean"
+        class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm border-2 border-slate-200 text-slate-500 transition-all hover:border-primary hover:text-primary">
+        🧴 Deep Cleaning
+      </button>
+    </div>
+
+    <!-- Panel: Kiloan -->
+    <div id="panel-kiloan" class="tab-panel active grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
+        <div class="text-2xl mb-3">👕</div>
+        <h3 class="font-bold text-slate-800 mb-1">Cuci + Kering</h3>
+        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
+        <p class="text-2xl font-extrabold text-primary mb-1">Rp 5.000 <span class="text-sm font-normal text-slate-400">/ kg</span></p>
+        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 1–2 hari kerja &nbsp;|&nbsp; Min. 3 kg</p>
+        <ul class="text-sm text-slate-500 space-y-1.5">
+          <li>✅ Cuci mesin + pengeringan</li>
+          <li>✅ Dilipat rapi</li>
+          <li>✅ Dikemas plastik bersih</li>
+        </ul>
+      </div>
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
+        <div class="text-2xl mb-3">👔</div>
+        <h3 class="font-bold text-slate-800 mb-1">Cuci + Setrika</h3>
+        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
+        <p class="text-2xl font-extrabold text-primary mb-1">Rp 7.000 <span class="text-sm font-normal text-slate-400">/ kg</span></p>
+        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 2 hari kerja &nbsp;|&nbsp; Min. 3 kg</p>
+        <ul class="text-sm text-slate-500 space-y-1.5">
+          <li>✅ Cuci mesin + pengeringan</li>
+          <li>✅ Setrika profesional</li>
+          <li>✅ Dilipat &amp; dikemas rapi</li>
+        </ul>
+      </div>
+      <div class="card-lift bg-white border-2 border-primary rounded-2xl p-6 relative">
+        <div class="absolute -top-3 left-5">
+          <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">⭐ Paling Populer</span>
+        </div>
+        <div class="text-2xl mb-3 mt-2">🧺</div>
+        <h3 class="font-bold text-slate-800 mb-1">Express (Same Day)</h3>
+        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
+        <p class="text-2xl font-extrabold text-primary mb-1">Rp 12.000 <span class="text-sm font-normal text-slate-400">/ kg</span></p>
+        <p class="text-xs text-slate-400 mb-4">⏱ Selesai hari yang sama* &nbsp;|&nbsp; Min. 3 kg</p>
+        <ul class="text-sm text-slate-500 space-y-1.5">
+          <li>✅ Prioritas antrian</li>
+          <li>✅ Cuci + setrika + lipat</li>
+          <li>✅ *Order sebelum pukul 10.00</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Panel: Sepatu -->
+    <div id="panel-sepatu" class="tab-panel grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
+        <div class="text-2xl mb-3">👟</div>
+        <h3 class="font-bold text-slate-800 mb-1">Sepatu Kain / Canvas</h3>
+        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
+        <p class="text-2xl font-extrabold text-primary mb-1">Rp 20.000 <span class="text-sm font-normal text-slate-400">/ pasang</span></p>
+        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 2–3 hari</p>
+        <ul class="text-sm text-slate-500 space-y-1.5">
+          <li>✅ Cuci tangan + sikat lembut</li>
+          <li>✅ Deodorizer</li>
+          <li>✅ Dikemas rapi</li>
+        </ul>
+      </div>
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
+        <div class="text-2xl mb-3">👠</div>
+        <h3 class="font-bold text-slate-800 mb-1">Sepatu Kulit / Suede</h3>
+        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
+        <p class="text-2xl font-extrabold text-primary mb-1">Rp 35.000 <span class="text-sm font-normal text-slate-400">/ pasang</span></p>
+        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 3–4 hari</p>
+        <ul class="text-sm text-slate-500 space-y-1.5">
+          <li>✅ Treatment kulit premium</li>
+          <li>✅ Conditioning &amp; waterproof spray</li>
+          <li>✅ Dikemas rapi</li>
+        </ul>
+      </div>
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
+        <div class="text-2xl mb-3">⚽</div>
+        <h3 class="font-bold text-slate-800 mb-1">Sepatu Olahraga</h3>
+        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
+        <p class="text-2xl font-extrabold text-primary mb-1">Rp 25.000 <span class="text-sm font-normal text-slate-400">/ pasang</span></p>
+        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 2–3 hari</p>
+        <ul class="text-sm text-slate-500 space-y-1.5">
+          <li>✅ Deep clean sol &amp; upper</li>
+          <li>✅ Penghilang bau intensif</li>
+          <li>✅ Dikemas rapi</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Panel: Deep Cleaning -->
+    <div id="panel-deepclean" class="tab-panel grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
+        <div class="text-2xl mb-3">👜</div>
+        <h3 class="font-bold text-slate-800 mb-1">Tas Kain / Canvas</h3>
+        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
+        <p class="text-2xl font-extrabold text-primary mb-1">Rp 30.000 <span class="text-sm font-normal text-slate-400">/ item</span></p>
+        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 3–4 hari</p>
+        <ul class="text-sm text-slate-500 space-y-1.5">
+          <li>✅ Cuci dalam + luar</li>
+          <li>✅ Penghilang noda membandel</li>
+          <li>✅ Deodorizer</li>
+        </ul>
+      </div>
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
+        <div class="text-2xl mb-3">💼</div>
+        <h3 class="font-bold text-slate-800 mb-1">Tas Kulit / Premium</h3>
+        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
+        <p class="text-2xl font-extrabold text-primary mb-1">Rp 60.000 <span class="text-sm font-normal text-slate-400">/ item</span></p>
+        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 4–5 hari</p>
+        <ul class="text-sm text-slate-500 space-y-1.5">
+          <li>✅ Treatment kulit premium</li>
+          <li>✅ Conditioning &amp; proteksi UV</li>
+          <li>✅ Dikemas bubble wrap</li>
+        </ul>
+      </div>
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
+        <div class="text-2xl mb-3">⛑️</div>
+        <h3 class="font-bold text-slate-800 mb-1">Helm Full Face / Half</h3>
+        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
+        <p class="text-2xl font-extrabold text-primary mb-1">Rp 35.000 <span class="text-sm font-normal text-slate-400">/ item</span></p>
+        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 2–3 hari</p>
+        <ul class="text-sm text-slate-500 space-y-1.5">
+          <li>✅ Cuci busa interior</li>
+          <li>✅ Poles visor</li>
+          <li>✅ Anti-bacterial spray</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="text-center text-slate-400 text-xs mt-8">*Harga dapat berubah. Konfirmasi final via WhatsApp. Antar-jemput gratis area sekitar ±5 km.</p>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="py-20 bg-white" id="how">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest">Cara Kerja</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mt-2">Semudah 3 Langkah</h2>
+      <p class="text-slate-400 mt-3 max-w-xl mx-auto">Tidak perlu keluar rumah. Kami yang urus dari awal sampai akhir.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-8 relative">
+      <!-- Connector line desktop -->
+      <div class="hidden sm:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20"></div>
+
+      <!-- Step 1 -->
+      <div class="text-center relative z-10">
+        <div class="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg shadow-primary/20">📦</div>
+        <span class="inline-flex items-center justify-center w-6 h-6 bg-primary text-white text-xs font-bold rounded-full mb-3">1</span>
+        <h3 class="font-bold text-slate-800 text-lg mb-2">Pisahkan &amp; Pesan</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Pisahkan cucianmu lalu hubungi kami via WhatsApp untuk booking jadwal jemput. Gampang!</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="text-center relative z-10">
+        <div class="w-20 h-20 bg-accent rounded-3xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg shadow-accent/20">🚗</div>
+        <span class="inline-flex items-center justify-center w-6 h-6 bg-accent text-white text-xs font-bold rounded-full mb-3">2</span>
+        <h3 class="font-bold text-slate-800 text-lg mb-2">Kami Jemput &amp; Cuci</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Tim kami jemput tepat waktu, lalu cuci dengan standar kebersihan tinggi dan detergen premium.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="text-center relative z-10">
+        <div class="w-20 h-20 bg-highlight rounded-3xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg shadow-orange-200">✨</div>
+        <span class="inline-flex items-center justify-center w-6 h-6 bg-highlight text-white text-xs font-bold rounded-full mb-3">3</span>
+        <h3 class="font-bold text-slate-800 text-lg mb-2">Antar Kembali Bersih</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Pakaian bersih, wangi, dan rapi diantar kembali ke pintu rumahmu. Tracking status via WhatsApp!</p>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="https://wa.me/6281234567890?text=Halo+CUCINIH%2C+saya+mau+pesan+laundry"
+         target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold px-8 py-3.5 rounded-xl transition-colors shadow-lg shadow-primary/20 text-sm">
+        Mulai Pesan Sekarang →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROMO CTA ===== -->
+<section class="py-20 bg-gradient-to-br from-primary to-primary-dark" id="promo">
+  <div class="max-w-5xl mx-auto px-5 lg:px-8 text-center">
+    <span class="inline-block bg-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5">🎉 Grand Launching Exclusive</span>
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Diskon 30% untuk<br class="sm:hidden"/> 50 Pelanggan Pertama!</h2>
+    <p class="text-blue-100 text-lg mb-10 max-w-xl mx-auto">Daftarkan dirimu sekarang, dapatkan akses prioritas dan harga spesial yang tidak akan tersedia setelah grand launching.</p>
+
+    <div class="grid grid-cols-3 gap-4 mb-10 max-w-lg mx-auto">
+      <div class="bg-white/10 border border-white/20 rounded-2xl p-5 text-white">
+        <div class="text-3xl font-extrabold">30%</div>
+        <div class="text-xs text-blue-200 mt-1">Diskon semua layanan</div>
+      </div>
+      <div class="bg-white/10 border border-white/20 rounded-2xl p-5 text-white">
+        <div class="text-3xl font-extrabold">FREE</div>
+        <div class="text-xs text-blue-200 mt-1">Antar-jemput pertama</div>
+      </div>
+      <div class="bg-white/10 border border-white/20 rounded-2xl p-5 text-white">
+        <div class="text-3xl font-extrabold">50</div>
+        <div class="text-xs text-blue-200 mt-1">Slot tersisa</div>
+      </div>
+    </div>
+
+    <a href="https://wa.me/6281234567890?text=Halo+CUCINIH%2C+saya+mau+klaim+promo+grand+launching"
+       target="_blank" rel="noopener"
+       class="inline-flex items-center gap-2 bg-highlight hover:bg-orange-500 text-white font-extrabold px-8 py-4 rounded-xl text-base transition-colors shadow-xl shadow-orange-900/30">
+      🎁 Klaim Promo Sekarang
+    </a>
+    <p class="text-blue-200/60 text-xs mt-4">*Promo berlaku terbatas. Hubungi via WhatsApp untuk klaim.</p>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="py-20 bg-surface" id="testimoni">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest">Testimoni</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mt-2">Kata Mereka yang Sudah Coba</h2>
+      <p class="text-slate-400 mt-3">Dari beta tester awal kami — cerita nyata, hasil nyata.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Testi 1 -->
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
+        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★★</div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Akhirnya nemu laundry yang tepat waktu dan hasilnya beneran bersih. Baju putih saya yang udah menguning jadi cerah lagi. Recommended banget!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm shrink-0">RA</div>
+          <div>
+            <p class="font-semibold text-slate-800 text-sm">Rania A.</p>
+            <p class="text-xs text-slate-400">Mahasiswa, Bandung</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testi 2 -->
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
+        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★★</div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Paket cuci sepatunya keren banget. Sneakers saya yang udah lusuh balik kayak baru. Harga juga masuk akal buat kualitas segitu."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm shrink-0">BP</div>
+          <div>
+            <p class="font-semibold text-slate-800 text-sm">Budi P.</p>
+            <p class="text-xs text-slate-400">Pekerja Kantoran, Jakarta</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testi 3 -->
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
+        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★★</div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Jemput tepat waktu, diantar juga cepat. Tracking via WA bikin tenang karena tahu status cucian tanpa harus telepon. Cocok buat keluarga sibuk!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-highlight/20 flex items-center justify-center font-bold text-highlight text-sm shrink-0">SW</div>
+          <div>
+            <p class="font-semibold text-slate-800 text-sm">Sari W.</p>
+            <p class="text-xs text-slate-400">Ibu Rumah Tangga, Depok</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testi 4 -->
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
+        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★☆</div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Awalnya skeptis sama laundry baru, tapi hasilnya memuaskan. Helm saya yang baunya udah 'vintage' sekarang wangi lagi haha. Pasti balik lagi!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm shrink-0">DK</div>
+          <div>
+            <p class="font-semibold text-slate-800 text-sm">Dimas K.</p>
+            <p class="text-xs text-slate-400">Kurir Freelance, Bandung</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testi 5 -->
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
+        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★★</div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Detergennya beneran ramah lingkungan, saya yang alergi detergen biasa akhirnya bisa pakai laundry tanpa kulit gatal. Big plus!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm shrink-0">NF</div>
+          <div>
+            <p class="font-semibold text-slate-800 text-sm">Nadia F.</p>
+            <p class="text-xs text-slate-400">Mahasiswa, Surabaya</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testi 6 -->
+      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
+        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★★</div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Tas kulit saya yang terkena tumpahan kopi berhasil diselamatkan. Keren banget hasilnya. Pelayanan ramah dan komunikasinya sangat responsif."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-highlight/20 flex items-center justify-center font-bold text-highlight text-sm shrink-0">MR</div>
+          <div>
+            <p class="font-semibold text-slate-800 text-sm">Maya R.</p>
+            <p class="text-xs text-slate-400">Pengusaha, Tangerang</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Rating Summary -->
+    <div class="mt-12 bg-white border border-slate-100 rounded-2xl p-6 max-w-xs mx-auto text-center card-lift">
+      <div class="text-5xl font-extrabold text-primary mb-1">4.9</div>
+      <div class="flex justify-center gap-0.5 text-yellow-400 text-xl mb-2">★★★★★</div>
+      <p class="text-slate-400 text-sm">Berdasarkan 200+ ulasan beta tester</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-slate-900 text-slate-400" id="contact">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      <!-- Brand -->
+      <div>
+        <a href="#" class="flex items-center gap-2 font-extrabold text-xl text-white mb-3 select-none">
+          <span class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-sm">✦</span>
+          CUCI<span class="text-primary">NIH</span>
+        </a>
+        <p class="text-sm leading-relaxed mb-5">Laundry modern yang bersih, wangi, dan tepat waktu. Untuk mahasiswa, pekerja, dan keluarga muda.</p>
+        <div class="flex gap-2">
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-primary flex items-center justify-center text-sm transition-colors">📸</a>
+          <a href="#" aria-label="TikTok"    class="w-9 h-9 rounded-lg bg-white/10 hover:bg-primary flex items-center justify-center text-sm transition-colors">🎵</a>
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" aria-label="WhatsApp"
+             class="w-9 h-9 rounded-lg bg-white/10 hover:bg-primary flex items-center justify-center text-sm transition-colors">💬</a>
+        </div>
+      </div>
+
+      <!-- Navigasi -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Navigasi</h4>
+        <ul class="flex flex-col gap-2 text-sm">
+          <li><a href="#why"       class="hover:text-primary transition-colors">Keunggulan</a></li>
+          <li><a href="#services"  class="hover:text-primary transition-colors">Layanan &amp; Harga</a></li>
+          <li><a href="#how"       class="hover:text-primary transition-colors">Cara Kerja</a></li>
+          <li><a href="#promo"     class="hover:text-primary transition-colors">Promo Launching</a></li>
+          <li><a href="#testimoni" class="hover:text-primary transition-colors">Testimoni</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Kontak</h4>
+        <ul class="flex flex-col gap-3 text-sm">
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5">💬</span>
+            <div>
+              <p class="text-white font-medium text-xs mb-0.5">WhatsApp</p>
+              <!-- GANTI: isi nomor WhatsApp asli -->
+              <a href="https://wa.me/6281234567890" class="hover:text-primary transition-colors">+62 812-3456-7890</a>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5">📍</span>
+            <div>
+              <p class="text-white font-medium text-xs mb-0.5">Alamat</p>
+              <!-- GANTI: isi alamat asli -->
+              <p>Jl. Contoh No. 1, Bandung,<br/>Jawa Barat 40123</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5">🕐</span>
+            <div>
+              <p class="text-white font-medium text-xs mb-0.5">Jam Operasional</p>
+              <!-- GANTI: sesuaikan jam operasional -->
+              <p>Senin – Sabtu: 07.00 – 21.00<br/>Minggu: 08.00 – 18.00</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CTA Card -->
+      <div>
+        <h4 class="text-white font-semibold mb-4">Mulai Sekarang</h4>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+          <p class="text-sm text-slate-300 mb-4">Jangan lewatkan promo grand launching! Hubungi kami sekarang.</p>
+          <a href="https://wa.me/6281234567890?text=Halo+CUCINIH%2C+saya+mau+tanya+promo+launching"
+             target="_blank" rel="noopener"
+             class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition-colors w-full">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.859L.054 23.448a.75.75 0 00.91.908l5.67-1.47A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.708 9.708 0 01-4.95-1.354l-.355-.21-3.664.95.974-3.559-.231-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+            Chat WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-white/5 py-5">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <!-- GANTI: tahun dan nama bisnis sesuai kebutuhan -->
+      <p>© 2025 CUCINIH. Semua hak dilindungi.</p>
+      <p>Dibuat dengan ❤️ untuk laundry yang lebih baik.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // ── Hamburger Menu ──
+  const menuBtn   = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen  = document.getElementById('iconOpen');
+  const iconClose = document.getElementById('iconClose');
+
+  function closeNav() {
+    mobileMenu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    if (isOpen) {
+      closeNav();
+    } else {
+      mobileMenu.classList.remove('hidden');
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      menuBtn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+      closeNav();
+    }
+  });
+
+  // ── Navbar shadow on scroll ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('shadow-md', window.scrollY > 10);
+  });
+
+  // ── Countdown Timer ──
+  // GANTI: tanggal launching (YYYY-MM-DDTHH:MM:SS)
+  const LAUNCH_DATE = new Date('2025-09-01T08:00:00');
+
+  function updateCountdown() {
+    const diff = LAUNCH_DATE - new Date();
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(id => {
+        document.getElementById(id).textContent = '00';
+      });
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent    = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent   = String(h).padStart(2,'0');
+    document.getElementById('cd-minutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-seconds').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ── Service Tabs ──
+  function showTab(tabId) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active','text-primary','border-primary','bg-primary/6');
+      b.classList.add('text-slate-500','border-slate-200');
+    });
+    document.getElementById('panel-' + tabId).classList.add('active');
+    const btn = document.getElementById('tab-' + tabId);
+    btn.classList.add('active','text-primary','border-primary','bg-primary/6');
+    btn.classList.remove('text-slate-500','border-slate-200');
+  }
+
+  // ── Scroll-reveal animation ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card-lift').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    revealObserver.observe(el);
+  });
+</script>
+</body>
+</html>
