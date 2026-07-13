@@ -1,468 +1,79 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CUCINIH – Laundry Antar Jemput JABODETABEK</title>
-  <meta name="description" content="Layanan laundry premium antar jemput se-JABODETABEK. Bersih, wangi, tepat waktu. Daftar sekarang dan dapatkan penawaran eksklusif pre-launch!" />
+  <title>CUCINIH — Laundry Modern, Bersih & Wangi</title>
+  <meta name="description" content="Laundry modern kiloan, sepatu, tas, dan helm. Antar-jemput gratis, detergen ramah lingkungan, dan tracking via WhatsApp. Grand Launching segera!" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:   { DEFAULT: '#0EA5E9', light: '#38BDF8', dark: '#0284C7' },
+            accent:    { DEFAULT: '#10B981', light: '#34D399' },
+            highlight: '#F97316',
+            surface:   '#F8FAFC',
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* smooth underline nav link */
+    .nav-link::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0;
+      background: #0EA5E9;
+      transition: width .25s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* gradient hero text */
+    .gradient-text {
+      background: linear-gradient(135deg, #0EA5E9 0%, #10B981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* blob background */
+    .hero-bg {
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, #e0f2fe 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 90% 80%, #d1fae5 0%, transparent 60%),
+                  #f8fafc;
+    }
+
+    /* card hover lift */
+    .card-lift { transition: transform .2s ease, box-shadow .2s ease; }
+    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(14,165,233,.12); }
+
+    /* FAQ answer transition */
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .faq-body.open { max-height: 200px; }
+
+    /* tab underline */
+    .tab-btn.active {
+      color: #0EA5E9;
+      border-bottom-color: #0EA5E9;
+    }
+
+    /* pulse badge */
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(249,115,22,.4); }
+      70%  { box-shadow: 0 0 0 10px rgba(249,115,22,0); }
+      100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+    }
+    .pulse-ring { animation: pulse-ring 2s infinite; }
+  </style>
 </head>
-<body>
-
-  <!-- ===== NAVBAR ===== -->
-  <header class="navbar">
-    <div class="container navbar__inner">
-      <a href="#" class="logo">
-        <span class="logo__icon">🫧</span>
-        <span class="logo__text">CUCINIH</span>
-      </a>
-      <nav class="nav-links">
-        <a href="#cara-kerja">Cara Kerja</a>
-        <a href="#layanan">Layanan</a>
-        <a href="#keunggulan">Keunggulan</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <a href="#daftar" class="btn btn--outline btn--sm">Daftar Pre-Launch</a>
-    </div>
-  </header>
-
-  <!-- ===== HERO + LEAD FORM ===== -->
-  <section class="hero" id="daftar">
-    <div class="hero__bg-shapes">
-      <div class="shape shape--1"></div>
-      <div class="shape shape--2"></div>
-      <div class="shape shape--3"></div>
-    </div>
-    <div class="container hero__inner">
-
-      <!-- Left: Copy -->
-      <div class="hero__copy">
-        <span class="badge">🚀 Segera Hadir di JABODETABEK</span>
-        <h1 class="hero__title">
-          Laundry Bersih &amp; Wangi,<br />
-          <span class="text-accent">Antar Jemput</span> ke Pintumu
-        </h1>
-        <p class="hero__subtitle">
-          CUCINIH hadir untuk memudahkan urusan laundrymu. Penjemputan terjadwal, proses profesional, pengiriman tepat waktu — semua dalam satu aplikasi.
-        </p>
-        <ul class="hero__bullets">
-          <li>
-            <span class="bullet-icon">✅</span>
-            Jangkauan seluruh <strong>JABODETABEK</strong>
-          </li>
-          <li>
-            <span class="bullet-icon">✅</span>
-            Jemput &amp; antar dalam <strong>24 jam</strong>
-          </li>
-          <li>
-            <span class="bullet-icon">✅</span>
-            Harga transparan, <strong>tanpa biaya tersembunyi</strong>
-          </li>
-          <li>
-            <span class="bullet-icon">✅</span>
-            Diskon eksklusif untuk <strong>pendaftar pre-launch</strong>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Right: Lead Form -->
-      <div class="hero__form-wrap">
-        <div class="form-card">
-          <div class="form-card__header">
-            <p class="form-card__eyebrow">Daftar Sekarang — <strong>Gratis!</strong></p>
-            <h2 class="form-card__title">Dapatkan Akses Awal &amp; Promo Spesial</h2>
-            <p class="form-card__desc">Jadilah yang pertama menikmati layanan CUCINIH dan hemat hingga <strong class="text-green">30%</strong> di bulan pertama.</p>
-          </div>
-
-          <form class="lead-form" id="leadForm" novalidate>
-            <div class="form-group">
-              <label for="nama">Nama Lengkap</label>
-              <input
-                type="text"
-                id="nama"
-                name="nama"
-                placeholder="Contoh: Budi Santoso"
-                autocomplete="name"
-                required
-              />
-              <span class="form-error" id="namaError">Nama tidak boleh kosong.</span>
-            </div>
-
-            <div class="form-group">
-              <label for="telepon">Nomor WhatsApp</label>
-              <div class="input-prefix-wrap">
-                <span class="input-prefix">+62</span>
-                <input
-                  type="tel"
-                  id="telepon"
-                  name="telepon"
-                  placeholder="8xxxxxxxxxx"
-                  autocomplete="tel"
-                  required
-                  pattern="[0-9]{8,13}"
-                />
-              </div>
-              <span class="form-error" id="teleponError">Masukkan nomor yang valid.</span>
-            </div>
-
-            <div class="form-group">
-              <label for="kota">Kota / Area</label>
-              <select id="kota" name="kota" required>
-                <option value="" disabled selected>Pilih kota kamu</option>
-                <option value="jakarta-pusat">Jakarta Pusat</option>
-                <option value="jakarta-selatan">Jakarta Selatan</option>
-                <option value="jakarta-barat">Jakarta Barat</option>
-                <option value="jakarta-timur">Jakarta Timur</option>
-                <option value="jakarta-utara">Jakarta Utara</option>
-                <option value="bogor">Bogor</option>
-                <option value="depok">Depok</option>
-                <option value="tangerang">Tangerang</option>
-                <option value="tangerang-selatan">Tangerang Selatan</option>
-                <option value="bekasi">Bekasi</option>
-              </select>
-              <span class="form-error" id="kotaError">Pilih kota terlebih dahulu.</span>
-            </div>
-
-            <button type="submit" class="btn btn--primary btn--full">
-              <span class="btn__text">Daftar Sekarang — Gratis!</span>
-              <span class="btn__loader" aria-hidden="true"></span>
-            </button>
-
-            <p class="form-disclaimer">
-              🔒 Datamu aman. Kami tidak akan mengirim spam.
-            </p>
-          </form>
-
-          <!-- Success State -->
-          <div class="form-success" id="formSuccess" hidden>
-            <div class="form-success__icon">🎉</div>
-            <h3>Yeay, kamu terdaftar!</h3>
-            <p>Kami akan menghubungimu via WhatsApp begitu CUCINIH siap di areamu. Nantikan promo eksklusif untukmu!</p>
-          </div>
-        </div>
-
-        <p class="social-proof">
-          <strong>1.200+</strong> orang sudah mendaftar antrian pre-launch
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===== TRUST BAR ===== -->
-  <section class="trust-bar">
-    <div class="container trust-bar__inner">
-      <div class="trust-item">
-        <span class="trust-item__num">1.200+</span>
-        <span class="trust-item__label">Pendaftar Antrian</span>
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <span class="trust-item__num">10+</span>
-        <span class="trust-item__label">Kota Terjangkau</span>
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <span class="trust-item__num">24 Jam</span>
-        <span class="trust-item__label">Layanan Antar Jemput</span>
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <span class="trust-item__num">4.9 ⭐</span>
-        <span class="trust-item__label">Rating Pilot Test</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CARA KERJA ===== -->
-  <section class="section cara-kerja" id="cara-kerja">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Cara Kerja</span>
-        <h2 class="section-title">Semudah <span class="text-accent">3 Langkah</span></h2>
-        <p class="section-subtitle">Tidak perlu keluar rumah. Cukup pesan, kami yang urus sisanya.</p>
-      </div>
-
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-card__number">01</div>
-          <div class="step-card__icon">📱</div>
-          <h3 class="step-card__title">Pesan via Aplikasi</h3>
-          <p class="step-card__desc">Buka aplikasi CUCINIH, pilih layanan, tentukan jadwal penjemputan yang sesuai. Mudah dan cepat dalam hitungan menit.</p>
-        </div>
-        <div class="step-connector" aria-hidden="true">→</div>
-        <div class="step-card">
-          <div class="step-card__number">02</div>
-          <div class="step-card__icon">🚗</div>
-          <h3 class="step-card__title">Kami Jemput &amp; Cuci</h3>
-          <p class="step-card__desc">Kurir kami datang ke pintumu untuk mengambil pakaian. Dicuci dan disetrika secara profesional di fasilitas kami.</p>
-        </div>
-        <div class="step-connector" aria-hidden="true">→</div>
-        <div class="step-card">
-          <div class="step-card__number">03</div>
-          <div class="step-card__icon">📦</div>
-          <h3 class="step-card__title">Terima Bersih &amp; Wangi</h3>
-          <p class="step-card__desc">Pakaianmu dikemas rapi dan diantar kembali dalam kondisi bersih, segar, dan terlipat sempurna tepat waktu.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== LAYANAN ===== -->
-  <section class="section layanan" id="layanan">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Layanan Kami</span>
-        <h2 class="section-title">Pilihan <span class="text-accent">Lengkap</span> untuk Semua Kebutuhan</h2>
-        <p class="section-subtitle">Dari pakaian harian hingga item spesial, kami siap menanganinya.</p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card service-card--featured">
-          <div class="service-card__badge">Terpopuler</div>
-          <div class="service-card__icon">👕</div>
-          <h3 class="service-card__title">Cuci &amp; Setrika</h3>
-          <p class="service-card__desc">Layanan lengkap untuk pakaian harian. Dicuci bersih, dikeringkan, dan disetrika sempurna.</p>
-          <div class="service-card__price">Mulai <strong>Rp 6.000</strong> / kg</div>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">🧺</div>
-          <h3 class="service-card__title">Cuci Kering</h3>
-          <p class="service-card__desc">Hanya cuci dan keringkan, cocok untuk item yang tidak perlu setrika seperti handuk dan sprei.</p>
-          <div class="service-card__price">Mulai <strong>Rp 4.000</strong> / kg</div>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">👔</div>
-          <h3 class="service-card__title">Dry Cleaning</h3>
-          <p class="service-card__desc">Untuk pakaian spesial seperti jas, gaun, dan blazer yang membutuhkan penanganan ekstra hati-hati.</p>
-          <div class="service-card__price">Mulai <strong>Rp 25.000</strong> / item</div>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">🛏️</div>
-          <h3 class="service-card__title">Cuci Sprei &amp; Selimut</h3>
-          <p class="service-card__desc">Sprei, selimut, dan bantal guling dicuci bersih dengan detergen premium yang aman untuk kulit sensitif.</p>
-          <div class="service-card__price">Mulai <strong>Rp 15.000</strong> / item</div>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">👟</div>
-          <h3 class="service-card__title">Cuci Sepatu</h3>
-          <p class="service-card__desc">Sepatu sneakers, kasual, hingga sepatu kulit dibersihkan dan dirawat oleh tenaga profesional.</p>
-          <div class="service-card__price">Mulai <strong>Rp 35.000</strong> / pasang</div>
-        </div>
-        <div class="service-card">
-          <div class="service-card__icon">🎽</div>
-          <h3 class="service-card__title">Hanya Setrika</h3>
-          <p class="service-card__desc">Pakaian sudah dicuci sendiri? Kami bantu setrika dengan rapi dan profesional.</p>
-          <div class="service-card__price">Mulai <strong>Rp 3.000</strong> / item</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== KEUNGGULAN ===== -->
-  <section class="section keunggulan" id="keunggulan">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Kenapa CUCINIH?</span>
-        <h2 class="section-title">Lebih dari Sekadar <span class="text-accent">Laundry Biasa</span></h2>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-card__icon">⚡</div>
-          <h3>Ekspres 24 Jam</h3>
-          <p>Dijemput hari ini, sudah kembali ke tanganmu besok. Kami mengerti kesibukan kamu.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">📍</div>
-          <h3>Lacak Real-Time</h3>
-          <p>Pantau status laundrymu dari dijemput hingga diantar kembali, langsung di aplikasi.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">🌿</div>
-          <h3>Ramah Lingkungan</h3>
-          <p>Detergen biodegradable, kemasan daur ulang, dan mesin hemat air untuk bumi yang lebih baik.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">🛡️</div>
-          <h3>Bergaransi</h3>
-          <p>Tidak puas dengan hasilnya? Kami akan mencuci ulang gratis tanpa pertanyaan apapun.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">💳</div>
-          <h3>Bayar Mudah</h3>
-          <p>Transfer bank, GoPay, OVO, DANA, QRIS — semua metode pembayaran tersedia.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">🤝</div>
-          <h3>Langganan Hemat</h3>
-          <p>Berlangganan mingguan atau bulanan dan hemat lebih banyak. Makin sering, makin hemat.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TESTIMONIAL ===== -->
-  <section class="section testimonials">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Kata Mereka</span>
-        <h2 class="section-title">Pengalaman dari <span class="text-accent">Pilot Test</span></h2>
-        <p class="section-subtitle">CUCINIH sudah diuji coba oleh ratusan pengguna pilihan sebelum peluncuran resmi.</p>
-      </div>
-
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-card__stars">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-card__text">"Gila, pakaiannya bener-bener bersih dan wangi banget! Kurir datang tepat waktu, packaging juga rapi. Ini bakal jadi langganan tetap gue."</p>
-          <div class="testimonial-card__author">
-            <div class="testimonial-card__avatar">RD</div>
-            <div>
-              <strong>Rina D.</strong>
-              <span>Jakarta Selatan</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-card__stars">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-card__text">"Sebagai orang yang kerja dari rumah, CUCINIH bener-bener game changer. Nggak perlu nyetir ke laundry, tinggal pesan dan selesai."</p>
-          <div class="testimonial-card__author">
-            <div class="testimonial-card__avatar">AF</div>
-            <div>
-              <strong>Ahmad F.</strong>
-              <span>Depok</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-card__stars">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-card__text">"Cobain buat dry cleaning jas kantor dan hasilnya luar biasa. Lebih bersih dari laundry biasa dan harganya masuk akal. Highly recommended!"</p>
-          <div class="testimonial-card__author">
-            <div class="testimonial-card__avatar">SP</div>
-            <div>
-              <strong>Sari P.</strong>
-              <span>Tangerang Selatan</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FAQ ===== -->
-  <section class="section faq" id="faq">
-    <div class="container faq__inner">
-      <div class="section-header">
-        <span class="section-tag">FAQ</span>
-        <h2 class="section-title">Pertanyaan yang <span class="text-accent">Sering Ditanyakan</span></h2>
-      </div>
-
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary class="faq-item__question">Kapan CUCINIH akan diluncurkan?</summary>
-          <div class="faq-item__answer">
-            <p>CUCINIH dijadwalkan untuk diluncurkan secara resmi dalam waktu dekat. Daftar sekarang untuk mendapatkan akses awal dan notifikasi langsung saat kami siap di areamu.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__question">Area mana saja yang terjangkau?</summary>
-          <div class="faq-item__answer">
-            <p>Saat peluncuran, kami akan menjangkau seluruh wilayah JABODETABEK, mencakup Jakarta (semua wilayah), Bogor, Depok, Tangerang, Tangerang Selatan, dan Bekasi.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__question">Berapa lama proses laundry?</summary>
-          <div class="faq-item__answer">
-            <p>Layanan standar kami adalah 24 jam (dijemput hari ini, dikirim besok). Untuk layanan ekspres, bisa selesai dalam 6-8 jam dengan biaya tambahan. Dry cleaning membutuhkan waktu 2-3 hari kerja.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__question">Apa keuntungan mendaftar pre-launch?</summary>
-          <div class="faq-item__answer">
-            <p>Pendaftar pre-launch mendapatkan: diskon 30% untuk bulan pertama, akses prioritas saat peluncuran, bonus kredit senilai Rp 50.000, dan harga langganan eksklusif yang terkunci selamanya.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__question">Bagaimana dengan keamanan pakaian saya?</summary>
-          <div class="faq-item__answer">
-            <p>Setiap item dicatat dan difoto sebelum diproses. Kami menyediakan asuransi item untuk klaim jika terjadi kerusakan. Kepuasan dan keamanan barangmu adalah prioritas utama kami.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__question">Apakah ada minimum order?</summary>
-          <div class="faq-item__answer">
-            <p>Minimum order untuk layanan cuci adalah 3 kg. Untuk layanan dry cleaning dan cuci sepatu tidak ada minimum — bisa satuan. Biaya antar jemput gratis untuk order di atas Rp 50.000.</p>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA BOTTOM ===== -->
-  <section class="cta-bottom">
-    <div class="container cta-bottom__inner">
-      <div class="cta-bottom__copy">
-        <h2>Siap Ucapkan Selamat Tinggal pada Antrian Laundry?</h2>
-        <p>Daftar sekarang dan jadilah yang pertama merasakan kemudahan CUCINIH. Slot pre-launch terbatas!</p>
-      </div>
-      <a href="#daftar" class="btn btn--primary btn--lg">
-        Daftar Pre-Launch Gratis
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <a href="#" class="logo">
-          <span class="logo__icon">🫧</span>
-          <span class="logo__text">CUCINIH</span>
-        </a>
-        <p>Laundry premium antar jemput untuk warga JABODETABEK. Bersih, wangi, tepat waktu.</p>
-      </div>
-      <div class="footer__links">
-        <div class="footer-col">
-          <h4>Layanan</h4>
-          <ul>
-            <li><a href="#layanan">Cuci &amp; Setrika</a></li>
-            <li><a href="#layanan">Dry Cleaning</a></li>
-            <li><a href="#layanan">Cuci Sepatu</a></li>
-            <li><a href="#layanan">Cuci Sprei</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Perusahaan</h4>
-          <ul>
-            <li><a href="#cara-kerja">Cara Kerja</a></li>
-            <li><a href="#keunggulan">Keunggulan</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Hubungi Kami</h4>
-          <ul>
-            <li><a href="mailto:halo@cucinih.id">halo@cucinih.id</a></li>
-            <li><a href="https://wa.me/6281234567890" target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container">
-        <p>&copy; 2026 CUCINIH. Seluruh hak cipta dilindungi.</p>
-        <div class="footer__legal">
-          <a href="#">Kebijakan Privasi</a>
-          <a href="#">Syarat &amp; Ketentuan</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
-</body>
-</html>
+<body class="font-sans bg-surface text-slate-700 antialiased">
