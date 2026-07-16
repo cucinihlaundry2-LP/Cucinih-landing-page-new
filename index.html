@@ -1,736 +1,632 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CUCINIH — Laundry Modern, Bersih & Wangi</title>
-<meta name="description" content="Laundry modern kiloan, sepatu, tas, dan helm. Antar-jemput gratis, detergen ramah lingkungan, tracking via WhatsApp. Grand Launching segera!"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary:   { DEFAULT:'#0EA5E9', light:'#38BDF8', dark:'#0284C7' },
-        accent:    { DEFAULT:'#10B981', light:'#34D399' },
-        highlight: '#F97316',
-        surface:   '#F8FAFC',
-      },
-      fontFamily: { sans: ['Plus Jakarta Sans','Inter','sans-serif'] }
-    }
-  }
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-<style>
-  .nav-link::after{content:'';display:block;height:2px;width:0;background:#0EA5E9;transition:width .25s}
-  .nav-link:hover::after{width:100%}
-  .gradient-text{background:linear-gradient(135deg,#0EA5E9,#10B981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-  .hero-bg{background:radial-gradient(ellipse 80% 60% at 50% -10%,#e0f2fe,transparent 70%),radial-gradient(ellipse 40% 40% at 90% 80%,#d1fae5,transparent 60%),#F8FAFC}
-  .card-lift{transition:transform .2s,box-shadow .2s}
-  .card-lift:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(14,165,233,.12)}
-  @keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(14,165,233,.4)}70%{box-shadow:0 0 0 10px rgba(14,165,233,0)}100%{box-shadow:0 0 0 0 rgba(14,165,233,0)}}
-  .pulse-ring{animation:pulse-ring 2s infinite}
-  .tab-panel{display:none}.tab-panel.active{display:grid}
-  .tab-btn.active{color:#0EA5E9;border-color:#0EA5E9;background:rgba(14,165,233,.06)}
-  .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
-  .faq-answer.open{max-height:300px}
-</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="CUCINIH — Laundry langganan cuci-setrika-lipat, jemput-antar ke rumahmu. Segera hadir di BSD, Tangerang!" />
+<title>CUCINIH — Weekend Santai, Cucian Tetap Aman</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%230D2D4D'/%3E%3Ctext x='32' y='46' font-size='36' text-anchor='middle' font-family='Georgia%2Cserif' font-weight='bold' fill='%2332C27A'%3EC%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body class="font-sans bg-surface text-slate-700 antialiased">
+<body>
 
-<!-- ===== PROMO BANNER ===== -->
-<div id="promoBanner" class="bg-gradient-to-r from-highlight to-orange-400 text-white text-center py-2.5 px-4 text-sm font-semibold relative">
-  🎉 <span class="uppercase tracking-wide">Promo Grand Launching:</span> Diskon 30% untuk Semua Layanan! &nbsp;
-  <a href="#promo" class="underline font-bold hover:no-underline">Lihat Detail →</a>
-  <button onclick="document.getElementById('promoBanner').remove()" aria-label="Tutup" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg leading-none">✕</button>
-</div>
-
-<!-- ===== NAVBAR ===== -->
-<header id="navbar" class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-shadow duration-200">
-  <nav class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between h-16">
-
-    <!-- Logo -->
-    <a href="#" class="flex items-center gap-2 font-extrabold text-xl text-slate-800 select-none">
-      <span class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-sm">✦</span>
-      CUCI<span class="text-primary">NIH</span>
-    </a>
-
-    <!-- Desktop Links -->
-    <ul class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-500">
-      <li><a href="#services" class="nav-link pb-0.5 hover:text-primary transition-colors">Layanan</a></li>
-      <li><a href="#pricing"  class="nav-link pb-0.5 hover:text-primary transition-colors">Harga</a></li>
-      <li><a href="#promo"    class="nav-link pb-0.5 hover:text-primary transition-colors">Promo Launching</a></li>
-      <li><a href="#contact"  class="nav-link pb-0.5 hover:text-primary transition-colors">Kontak</a></li>
-    </ul>
-
-    <!-- CTA + Hamburger -->
-    <div class="flex items-center gap-3">
-      <a href="https://wa.me/6281234567890?text=Halo+CUCINIH" target="_blank" rel="noopener"
-         class="hidden md:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.859L.054 23.448a.75.75 0 00.91.908l5.67-1.47A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.708 9.708 0 01-4.95-1.354l-.355-.21-3.664.95.974-3.559-.231-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-        Hubungi Di Sini
-      </a>
-      <button id="menuBtn" aria-label="Menu" aria-expanded="false"
-              class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
-        <svg id="iconOpen"  class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        <svg id="iconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-5 pb-5 pt-3">
-    <ul class="flex flex-col gap-3 text-sm font-medium text-slate-600 mb-4">
-      <li><a href="#services" onclick="closeNav()" class="block py-1 hover:text-primary">Layanan</a></li>
-      <li><a href="#pricing"  onclick="closeNav()" class="block py-1 hover:text-primary">Harga</a></li>
-      <li><a href="#promo"    onclick="closeNav()" class="block py-1 hover:text-primary">Promo Launching</a></li>
-      <li><a href="#contact"  onclick="closeNav()" class="block py-1 hover:text-primary">Kontak</a></li>
-    </ul>
-    <a href="https://wa.me/6281234567890?text=Halo+CUCINIH" target="_blank" rel="noopener"
-       class="flex items-center justify-center gap-2 bg-primary text-white font-semibold py-2.5 rounded-xl text-sm w-full">
-      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.859L.054 23.448a.75.75 0 00.91.908l5.67-1.47A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.708 9.708 0 01-4.95-1.354l-.355-.21-3.664.95.974-3.559-.231-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-      Hubungi Di Sini
-    </a>
+<!-- ===== STICKY HEADER ===== -->
+<header class="site-header">
+  <div class="header-promo">
+    <span class="header-promo-icon">&#127881;</span>
+    <span class="header-promo-text">Grand Launching Segera Hadir &mdash; Daftar Sekarang &amp; Amankan Voucher <strong>Rp100.000</strong> untuk 100 Pendaftar Pertama!</span>
+    <a href="#hero" class="header-promo-cta" onclick="event.preventDefault();document.getElementById('nama').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('nama').focus(),400);">Daftar Gratis &#8594;</a>
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
-<section class="hero-bg min-h-[90vh] flex items-center pt-6 pb-16" id="hero">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8 w-full grid lg:grid-cols-2 gap-12 items-center">
+<!-- ===== HERO / ATF ===== -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="badge-urgency">&#127381; Khusus 100 Pendaftar Pertama</span>
+        <h1>Capek kerja seharian, masa <span class="hl">weekend</span> masih harus nyuci?</h1>
+        <p class="subhead">CUCINIH hadir dengan layanan laundry langganan <strong>cuci&#8209;setrika&#8209;lipat</strong>, jemput&#8209;antar langsung ke rumahmu &mdash; <strong>segera hadir di BSD!</strong> Daftar sekarang, amankan voucher <strong>Rp100.000</strong> yang langsung bisa dipakai begitu kami resmi launching.</p>
+        <div class="lead-card">
+          <h3>&#127873; Amankan Vouchermu Sekarang</h3>
+          <p class="form-sub">Isi formulir di bawah &mdash; gratis, tanpa syarat rumit.</p>
+          <form id="leadForm" novalidate>
+            <div class="fg">
+              <label for="nama">Nama Lengkap</label>
+              <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso" autocomplete="name" required />
+            </div>
+            <div class="fg">
+              <label for="ig">Username Instagram</label>
+              <div class="ig-wrap">
+                <span class="ig-at">@</span>
+                <input type="text" id="ig" name="instagram" placeholder="username_kamu" autocomplete="off" required />
+              </div>
+            </div>
+            <div class="cb-wrap">
+              <input type="checkbox" id="agree" />
+              <label for="agree">Saya menyetujui <a href="#" id="openPrivacy">Kebijakan Privasi</a> CUCINIH dan bersedia dihubungi via DM Instagram untuk konfirmasi voucher.</label>
+            </div>
+            <button type="submit" class="btn-primary" id="submitBtn" disabled>Daftar &amp; Amankan Voucher Rp100.000 &#127873;</button>
+          </form>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="FULL LOGO.png" alt="CUCINIH Logo" />
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Left: Copy -->
-    <div class="text-center lg:text-left">
-      <span class="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold text-xs px-3 py-1.5 rounded-full mb-5 pulse-ring">
-        🚀 Grand Launching Segera!
-      </span>
-      <h1 class="text-4xl sm:text-5xl xl:text-6xl font-extrabold text-slate-800 leading-tight mb-5">
-        Pakaian Bersih<br/>
-        <span class="gradient-text">Tanpa Ribet!</span>
-      </h1>
-      <p class="text-slate-500 text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-        CUCINIH hadir dengan layanan laundry modern —
-        <strong class="text-slate-700">antar-jemput gratis</strong> untuk area sekitar,
-        detergen ramah lingkungan, dan tracking status cucian via
-        <strong class="text-slate-700">WhatsApp</strong>.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8">
-        <a href="#promo"
-           class="inline-flex items-center justify-center gap-2 bg-highlight hover:bg-orange-500 text-white font-bold px-6 py-3.5 rounded-xl transition-colors shadow-lg shadow-orange-200 text-sm">
-          🎁 Lihat Promo Launching
+<!-- ===== USP ===== -->
+<section id="usp">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="tag">Kenapa CUCINIH?</span>
+      <h2>Bukan sekadar laundry biasa</h2>
+      <p>Begini nanti cara CUCINIH bekerja begitu resmi hadir di area kamu.</p>
+    </div>
+    <div class="grid4">
+      <div class="card-feat">
+        <img src="Delivery.png" alt="Jemput antar" loading="lazy" />
+        <h3>Jemput &amp; Antar ke Pintu Rumah</h3>
+        <p>Jadwal pickup terjadwal, kamu tidak perlu keluar rumah. Kami yang datang.</p>
+      </div>
+      <div class="card-feat">
+        <img src="Detergent.png" alt="Deterjen aman" loading="lazy" />
+        <h3>Deterjen Aman untuk Keluarga</h3>
+        <p>Formula lembut, bebas bahan keras &mdash; aman untuk kulit sensitif dan pakaian bayi.</p>
+      </div>
+      <div class="card-feat">
+        <img src="Cuci &amp; Setrika.png" alt="Cuci setrika lipat" loading="lazy" />
+        <h3>Cuci &ndash; Setrika &ndash; Lipat Rapi</h3>
+        <p>Pakaian bersih, wangi, dan sudah dilipat rapi &mdash; siap masuk lemari langsung.</p>
+      </div>
+      <div class="card-feat">
+        <img src="Service.png" alt="Harga transparan" loading="lazy" />
+        <h3>Harga Transparan, Tanpa Kejutan</h3>
+        <p>Paket bulanan dengan kuota jelas. Tidak ada biaya tersembunyi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CARA KERJA ===== -->
+<section id="cara-kerja">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="tag">Cara Kerja</span>
+      <h2>Semudah 4 langkah</h2>
+      <p>Gambaran alur layanan CUCINIH begitu resmi hadir di BSD.</p>
+    </div>
+    <div class="grid4">
+      <div class="card-step">
+        <div class="step-no">1</div>
+        <img src="Keranjang Laundry.png" alt="Pilih paket" loading="lazy" />
+        <h3>Daftar &amp; Pilih Paket</h3>
+        <p>Pilih paket bulanan yang sesuai kebutuhan keluargamu.</p>
+      </div>
+      <div class="card-step">
+        <div class="step-no">2</div>
+        <img src="Motor (Pickup).png" alt="Jadwalkan pickup" loading="lazy" />
+        <h3>Jadwalkan Pickup</h3>
+        <p>Tentukan waktu jemput, kurir kami datang ke lokasimu.</p>
+      </div>
+      <div class="card-step">
+        <div class="step-no">3</div>
+        <img src="Washing Machine.png" alt="Proses laundry" loading="lazy" />
+        <h3>Cuci &ndash; Setrika &ndash; Lipat</h3>
+        <p>Pakaian diproses secara higienis menggunakan deterjen pilihan.</p>
+      </div>
+      <div class="card-step">
+        <div class="step-no">4</div>
+        <img src="Laundry Selesai.png" alt="Antar balik" loading="lazy" />
+        <h3>Antar Balik ke Rumah</h3>
+        <p>Pakaian bersih, rapi, wangi &mdash; diantar langsung ke pintumu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAKET ===== -->
+<section id="paket">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="tag">Paket Layanan</span>
+      <h2>Nanti kamu bisa pilih paket:</h2>
+      <p>Estimasi harga subscription bulanan yang tersedia saat CUCINIH resmi launching.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pkg-card">
+        <img class="pkg-img" src="Pakaian (1).png" alt="Paket Single" loading="lazy" />
+        <div class="pkg-name">Single</div>
+        <div class="pkg-sub">Untuk individu &amp; pekerja muda</div>
+        <div class="pkg-price">Rp149.000<span>/bln</span></div>
+        <div class="pkg-quota">&#177;15 kg / bulan</div>
+        <ul class="pkg-list">
+          <li>Pakaian harian &amp; kerja</li>
+          <li>Cuci &ndash; setrika &ndash; lipat</li>
+          <li>Antar-jemput terjadwal</li>
+          <li>Deterjen aman &amp; wangi</li>
+        </ul>
+      </div>
+      <div class="pkg-card popular">
+        <div class="pop-badge">&#11088; Paling Populer</div>
+        <img class="pkg-img" src="Washing Clothes.png" alt="Paket Couple" loading="lazy" />
+        <div class="pkg-name">Couple</div>
+        <div class="pkg-sub">Untuk pasangan tanpa anak</div>
+        <div class="pkg-price">Rp249.000<span>/bln</span></div>
+        <div class="pkg-quota">&#177;25 kg / bulan</div>
+        <ul class="pkg-list">
+          <li>Pakaian harian &amp; kerja</li>
+          <li>Cuci &ndash; setrika &ndash; lipat</li>
+          <li>Antar-jemput terjadwal</li>
+          <li>Deterjen aman &amp; wangi</li>
+        </ul>
+      </div>
+      <div class="pkg-card">
+        <img class="pkg-img" src="Cuci &amp; Setrika.png" alt="Paket Small Family" loading="lazy" />
+        <div class="pkg-name">Small Family</div>
+        <div class="pkg-sub">Untuk keluarga muda dengan anak</div>
+        <div class="pkg-price">Rp349.000<span>/bln</span></div>
+        <div class="pkg-quota">&#177;35 kg / bulan</div>
+        <ul class="pkg-list">
+          <li>Pakaian harian &amp; kerja</li>
+          <li>Cuci &ndash; setrika &ndash; lipat</li>
+          <li>Antar-jemput terjadwal</li>
+          <li>Deterjen ekstra aman bayi</li>
+        </ul>
+      </div>
+    </div>
+    <div class="addon-box">
+      <h3>Layanan Tambahan (Item Besar / Spesial)</h3>
+      <p>Harga satuan item di luar paket subscription &mdash; segera hadir!</p>
+      <div class="addon-tags">
+        <span class="addon-tag">Bed Cover <span class="cs-chip">COMING SOON</span></span>
+        <span class="addon-tag">Stroller <span class="cs-chip">COMING SOON</span></span>
+        <span class="addon-tag">Tas <span class="cs-chip">COMING SOON</span></span>
+        <span class="addon-tag">Sepatu <span class="cs-chip">COMING SOON</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AREA ===== -->
+<section id="area">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="tag">Area Layanan</span>
+      <h2>Melayani area BSD &amp; sekitarnya</h2>
+      <p>Kami mulai dari jantung BSD dan terus berkembang ke seluruh Tangerang.</p>
+    </div>
+    <div class="area-wrap">
+      <div class="area-map">
+        <div style="font-size:2.5rem;margin-bottom:10px;">&#128205;</div>
+        <h3>Hub Utama CUCINIH</h3>
+        <p>Green Office Park 6 / The Breeze<br/>BSD City, Tangerang</p>
+      </div>
+      <div>
+        <ul class="area-list">
+          <li>Foresta &amp; Edutown (kawasan kampus)</li>
+          <li>Prasmul &amp; sekitar universitas BSD</li>
+          <li>Nava Park (keluarga muda)</li>
+          <li>Apartemen &amp; kost premium BSD</li>
+          <li>GOP, GoWork &amp; zona office park</li>
+          <li>The Breeze &amp; area komersial BSD</li>
+        </ul>
+        <div class="area-note">&#9432; Coverage area terus berkembang. Belum ada areamu? Daftar sekarang dan kami kabari saat layanan hadir di lokasimu!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="tag">FAQ</span>
+      <h2>Pertanyaan yang sering ditanya</h2>
+      <p>Semua yang perlu kamu tahu sebelum daftar.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Kapan CUCINIH resmi launching? <i class="fi">+</i></button>
+        <div class="faq-a"><div class="faq-ai">Kami sedang mempersiapkan operasional dengan sebaik-baiknya. Belum ada tanggal pasti, tapi semua pendaftar awal akan jadi yang <strong>pertama tahu</strong> begitu kami siap. Makanya daftar sekarang!</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Area mana saja yang tercakup layanan CUCINIH? <i class="fi">+</i></button>
+        <div class="faq-a"><div class="faq-ai">Kami mulai dari area BSD City &mdash; termasuk Green Office Park, Foresta, Edutown, Nava Park, dan apartemen/kost di sekitar BSD. Coverage terus berkembang seiring pertumbuhan layanan.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Bagaimana cara klaim voucher Rp100.000 setelah launching? <i class="fi">+</i></button>
+        <div class="faq-a"><div class="faq-ai">Setelah daftar, tim kami menghubungimu via <strong>DM Instagram</strong> mendekati tanggal launching untuk konfirmasi vouchermu. Voucher berlaku untuk transaksi pertama minimum Rp200.000.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Apakah bisa ganti paket setelah berlangganan? <i class="fi">+</i></button>
+        <div class="faq-a"><div class="faq-ai">Tentu saja! Kamu bisa upgrade atau downgrade paket sesuai kebutuhan. Detail teknis perpindahan paket akan kami informasikan saat launching resmi.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Bagaimana jika ada komplain soal hasil laundry? <i class="fi">+</i></button>
+        <div class="faq-a"><div class="faq-ai">Kepuasan kamu adalah prioritas kami. Jika ada masalah, kami siap menyelesaikannya &mdash; baik dengan pencucian ulang maupun solusi lain. Hubungi kami via WhatsApp atau Instagram.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Apakah kuota yang tidak terpakai bisa dipindah ke bulan berikutnya? <i class="fi">+</i></button>
+        <div class="faq-a"><div class="faq-ai">Kebijakan rollover kuota sedang kami finalisasi. Informasi lengkapnya akan diumumkan bersamaan dengan launching resmi CUCINIH.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOSMED ===== -->
+<section id="sosmed">
+  <div class="container">
+    <div class="sec-hd">
+      <span class="tag">Stay Updated</span>
+      <h2>Follow kami di media sosial</h2>
+      <p>Jangan sampai ketinggalan info launching, promo eksklusif, dan update terbaru CUCINIH!</p>
+    </div>
+    <div class="sosmed-wrap">
+      <div class="sosmed-cards">
+        <a href="https://www.instagram.com/cucinih_" target="_blank" rel="noopener noreferrer" class="sosmed-card">
+          <img src="Logo Instagram.jpg" alt="Instagram" width="44" height="44" style="border-radius:10px;" />
+          <div class="sm-info"><div class="sm-plat">Instagram</div><div class="sm-handle">@cucinih_</div></div>
         </a>
-        <a href="https://wa.me/6281234567890?text=Halo+CUCINIH%2C+saya+mau+tanya+layanan"
-           target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border-2 border-primary text-primary font-bold px-6 py-3.5 rounded-xl transition-colors text-sm">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.859L.054 23.448a.75.75 0 00.91.908l5.67-1.47A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.708 9.708 0 01-4.95-1.354l-.355-.21-3.664.95.974-3.559-.231-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-          Hubungi WhatsApp
+        <a href="https://www.facebook.com/cucinih" target="_blank" rel="noopener noreferrer" class="sosmed-card">
+          <img src="Logo Facebook.png" alt="Facebook" width="44" height="44" style="border-radius:10px;" />
+          <div class="sm-info"><div class="sm-plat">Facebook</div><div class="sm-handle">CUCINIH</div></div>
         </a>
       </div>
-      <div class="flex flex-wrap gap-4 justify-center lg:justify-start text-xs text-slate-400 font-medium">
-        <span>✅ Antar-jemput gratis</span>
-        <span>✅ Garansi bersih &amp; wangi</span>
-        <span>✅ Tanpa ribet, via WhatsApp</span>
-      </div>
-    </div>
-
-    <!-- Right: Countdown Card -->
-    <div class="flex justify-center lg:justify-end">
-      <div class="bg-white rounded-3xl shadow-xl shadow-slate-200 p-8 w-full max-w-sm border border-slate-100">
-        <p class="text-center text-slate-400 text-xs font-semibold uppercase tracking-widest mb-3">Launching Dalam</p>
-        <div class="grid grid-cols-4 gap-2 mb-5">
-          <div class="bg-surface rounded-2xl p-3 text-center border border-slate-100">
-            <span class="block text-3xl font-extrabold text-primary leading-none" id="cd-days">00</span>
-            <span class="text-xs text-slate-400 font-medium mt-1 block">Hari</span>
-          </div>
-          <div class="bg-surface rounded-2xl p-3 text-center border border-slate-100">
-            <span class="block text-3xl font-extrabold text-primary leading-none" id="cd-hours">00</span>
-            <span class="text-xs text-slate-400 font-medium mt-1 block">Jam</span>
-          </div>
-          <div class="bg-surface rounded-2xl p-3 text-center border border-slate-100">
-            <span class="block text-3xl font-extrabold text-primary leading-none" id="cd-minutes">00</span>
-            <span class="text-xs text-slate-400 font-medium mt-1 block">Menit</span>
-          </div>
-          <div class="bg-surface rounded-2xl p-3 text-center border border-slate-100">
-            <span class="block text-3xl font-extrabold text-primary leading-none" id="cd-seconds">00</span>
-            <span class="text-xs text-slate-400 font-medium mt-1 block">Detik</span>
-          </div>
-        </div>
-        <div class="bg-orange-50 border border-orange-200 rounded-2xl p-4 text-center mb-4">
-          <p class="text-highlight font-bold text-sm mb-1">🎉 Promo Grand Launching</p>
-          <p class="text-slate-600 text-sm">Diskon <strong class="text-highlight text-lg">30%</strong> semua layanan<br/>untuk 50 pelanggan pertama!</p>
-        </div>
-        <div class="grid grid-cols-2 gap-2">
-          <div class="bg-surface rounded-xl p-3 border border-slate-100 text-center">
-            <span class="block text-xl font-extrabold text-slate-800">500+</span>
-            <span class="text-xs text-slate-400">Pre-register</span>
-          </div>
-          <div class="bg-surface rounded-xl p-3 border border-slate-100 text-center">
-            <span class="block text-xl font-extrabold text-slate-800">⭐ 4.9</span>
-            <span class="text-xs text-slate-400">Rating Beta</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===== WHY CHOOSE US ===== -->
-<section class="py-20 bg-white" id="why">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="text-center mb-14">
-      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest">Keunggulan Kami</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mt-2">Kenapa Pilih CUCINIH?</h2>
-      <p class="text-slate-400 mt-3 max-w-xl mx-auto">Bukan sekadar laundry biasa — setiap detail kami rancang untuk kenyamanan dan kebersihan terbaik.</p>
-    </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-      <div class="card-lift bg-surface border border-slate-100 rounded-2xl p-6 text-center">
-        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">💧</div>
-        <h3 class="font-bold text-slate-800 mb-2">Air Murni Terfilter</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Menggunakan air yang sudah difiltrasi khusus agar pakaian lebih bersih dan bebas kuman.</p>
-      </div>
-
-      <div class="card-lift bg-surface border border-slate-100 rounded-2xl p-6 text-center">
-        <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">🌿</div>
-        <h3 class="font-bold text-slate-800 mb-2">Detergen Ramah Lingkungan</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Formula bio-degradable, aman untuk kulit sensitif dan tidak merusak lingkungan.</p>
-      </div>
-
-      <div class="card-lift bg-surface border border-slate-100 rounded-2xl p-6 text-center">
-        <div class="w-14 h-14 bg-highlight/10 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">✨</div>
-        <h3 class="font-bold text-slate-800 mb-2">Garansi Bersih &amp; Wangi</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Tidak puas? Kami cuci ulang gratis — tanpa tanda tanya, tanpa syarat tambahan.</p>
-      </div>
-
-      <div class="card-lift bg-surface border border-slate-100 rounded-2xl p-6 text-center">
-        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">📱</div>
-        <h3 class="font-bold text-slate-800 mb-2">Pelacakan via WhatsApp</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Pantau status cucianmu secara real-time langsung dari chat WhatsApp. Tidak perlu install app apapun.</p>
-      </div>
-
+      <p class="sosmed-note">Sambil nunggu launching, follow dulu supaya kamu gak ketinggalan promo perdana! &#128171;</p>
     </div>
   </div>
 </section>
 
-<!-- ===== SERVICES & PRICING ===== -->
-<section class="py-20 bg-surface" id="services">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="text-center mb-12">
-      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest">Layanan &amp; Harga</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mt-2" id="pricing">Semua Kebutuhan Cucimu</h2>
-      <p class="text-slate-400 mt-3 max-w-xl mx-auto">Pilih layanan yang kamu butuhkan — harga transparan, tanpa biaya tersembunyi.</p>
+<!-- ===== CTA BOTTOM ===== -->
+<section id="cta-btm">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="badge-urgency" style="margin-bottom:16px;display:inline-block;">&#9203; Sisa kuota terbatas!</span>
+      <h2>Jangan sampai kehabisan, daftar sekarang!</h2>
+      <p>Hanya untuk <strong>100 pendaftar pertama</strong> sebelum kami resmi launching &mdash; voucher Rp100.000 langsung bisa dipakai begitu CUCINIH buka layanan di area BSD.</p>
+      <a href="#hero" class="btn-cta">Daftar &amp; Amankan Voucher Rp100.000 &#127873;</a>
+      <p class="quota-note">Sudah <strong>tersisa terbatas</strong> dari 100 kuota &mdash; jangan tunda lagi!</p>
     </div>
-
-    <!-- Tab Buttons -->
-    <div class="flex gap-2 justify-center flex-wrap mb-10">
-      <button onclick="showTab('kiloan')" id="tab-kiloan"
-        class="tab-btn active px-5 py-2.5 rounded-xl font-semibold text-sm border-2 border-primary text-primary bg-primary/6 transition-all">
-        👕 Cuci Kiloan
-      </button>
-      <button onclick="showTab('sepatu')" id="tab-sepatu"
-        class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm border-2 border-slate-200 text-slate-500 transition-all hover:border-primary hover:text-primary">
-        👟 Cuci Sepatu
-      </button>
-      <button onclick="showTab('deepclean')" id="tab-deepclean"
-        class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm border-2 border-slate-200 text-slate-500 transition-all hover:border-primary hover:text-primary">
-        🧴 Deep Cleaning
-      </button>
-    </div>
-
-    <!-- Panel: Kiloan -->
-    <div id="panel-kiloan" class="tab-panel active grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
-        <div class="text-2xl mb-3">👕</div>
-        <h3 class="font-bold text-slate-800 mb-1">Cuci + Kering</h3>
-        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
-        <p class="text-2xl font-extrabold text-primary mb-1">Rp 5.000 <span class="text-sm font-normal text-slate-400">/ kg</span></p>
-        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 1–2 hari kerja &nbsp;|&nbsp; Min. 3 kg</p>
-        <ul class="text-sm text-slate-500 space-y-1.5">
-          <li>✅ Cuci mesin + pengeringan</li>
-          <li>✅ Dilipat rapi</li>
-          <li>✅ Dikemas plastik bersih</li>
-        </ul>
-      </div>
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
-        <div class="text-2xl mb-3">👔</div>
-        <h3 class="font-bold text-slate-800 mb-1">Cuci + Setrika</h3>
-        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
-        <p class="text-2xl font-extrabold text-primary mb-1">Rp 7.000 <span class="text-sm font-normal text-slate-400">/ kg</span></p>
-        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 2 hari kerja &nbsp;|&nbsp; Min. 3 kg</p>
-        <ul class="text-sm text-slate-500 space-y-1.5">
-          <li>✅ Cuci mesin + pengeringan</li>
-          <li>✅ Setrika profesional</li>
-          <li>✅ Dilipat &amp; dikemas rapi</li>
-        </ul>
-      </div>
-      <div class="card-lift bg-white border-2 border-primary rounded-2xl p-6 relative">
-        <div class="absolute -top-3 left-5">
-          <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">⭐ Paling Populer</span>
-        </div>
-        <div class="text-2xl mb-3 mt-2">🧺</div>
-        <h3 class="font-bold text-slate-800 mb-1">Express (Same Day)</h3>
-        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
-        <p class="text-2xl font-extrabold text-primary mb-1">Rp 12.000 <span class="text-sm font-normal text-slate-400">/ kg</span></p>
-        <p class="text-xs text-slate-400 mb-4">⏱ Selesai hari yang sama* &nbsp;|&nbsp; Min. 3 kg</p>
-        <ul class="text-sm text-slate-500 space-y-1.5">
-          <li>✅ Prioritas antrian</li>
-          <li>✅ Cuci + setrika + lipat</li>
-          <li>✅ *Order sebelum pukul 10.00</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Panel: Sepatu -->
-    <div id="panel-sepatu" class="tab-panel grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
-        <div class="text-2xl mb-3">👟</div>
-        <h3 class="font-bold text-slate-800 mb-1">Sepatu Kain / Canvas</h3>
-        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
-        <p class="text-2xl font-extrabold text-primary mb-1">Rp 20.000 <span class="text-sm font-normal text-slate-400">/ pasang</span></p>
-        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 2–3 hari</p>
-        <ul class="text-sm text-slate-500 space-y-1.5">
-          <li>✅ Cuci tangan + sikat lembut</li>
-          <li>✅ Deodorizer</li>
-          <li>✅ Dikemas rapi</li>
-        </ul>
-      </div>
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
-        <div class="text-2xl mb-3">👠</div>
-        <h3 class="font-bold text-slate-800 mb-1">Sepatu Kulit / Suede</h3>
-        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
-        <p class="text-2xl font-extrabold text-primary mb-1">Rp 35.000 <span class="text-sm font-normal text-slate-400">/ pasang</span></p>
-        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 3–4 hari</p>
-        <ul class="text-sm text-slate-500 space-y-1.5">
-          <li>✅ Treatment kulit premium</li>
-          <li>✅ Conditioning &amp; waterproof spray</li>
-          <li>✅ Dikemas rapi</li>
-        </ul>
-      </div>
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
-        <div class="text-2xl mb-3">⚽</div>
-        <h3 class="font-bold text-slate-800 mb-1">Sepatu Olahraga</h3>
-        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
-        <p class="text-2xl font-extrabold text-primary mb-1">Rp 25.000 <span class="text-sm font-normal text-slate-400">/ pasang</span></p>
-        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 2–3 hari</p>
-        <ul class="text-sm text-slate-500 space-y-1.5">
-          <li>✅ Deep clean sol &amp; upper</li>
-          <li>✅ Penghilang bau intensif</li>
-          <li>✅ Dikemas rapi</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Panel: Deep Cleaning -->
-    <div id="panel-deepclean" class="tab-panel grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
-        <div class="text-2xl mb-3">👜</div>
-        <h3 class="font-bold text-slate-800 mb-1">Tas Kain / Canvas</h3>
-        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
-        <p class="text-2xl font-extrabold text-primary mb-1">Rp 30.000 <span class="text-sm font-normal text-slate-400">/ item</span></p>
-        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 3–4 hari</p>
-        <ul class="text-sm text-slate-500 space-y-1.5">
-          <li>✅ Cuci dalam + luar</li>
-          <li>✅ Penghilang noda membandel</li>
-          <li>✅ Deodorizer</li>
-        </ul>
-      </div>
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
-        <div class="text-2xl mb-3">💼</div>
-        <h3 class="font-bold text-slate-800 mb-1">Tas Kulit / Premium</h3>
-        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
-        <p class="text-2xl font-extrabold text-primary mb-1">Rp 60.000 <span class="text-sm font-normal text-slate-400">/ item</span></p>
-        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 4–5 hari</p>
-        <ul class="text-sm text-slate-500 space-y-1.5">
-          <li>✅ Treatment kulit premium</li>
-          <li>✅ Conditioning &amp; proteksi UV</li>
-          <li>✅ Dikemas bubble wrap</li>
-        </ul>
-      </div>
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6">
-        <div class="text-2xl mb-3">⛑️</div>
-        <h3 class="font-bold text-slate-800 mb-1">Helm Full Face / Half</h3>
-        <p class="text-xs text-slate-400 mb-1">Mulai dari</p>
-        <p class="text-2xl font-extrabold text-primary mb-1">Rp 35.000 <span class="text-sm font-normal text-slate-400">/ item</span></p>
-        <p class="text-xs text-slate-400 mb-4">⏱ Estimasi 2–3 hari</p>
-        <ul class="text-sm text-slate-500 space-y-1.5">
-          <li>✅ Cuci busa interior</li>
-          <li>✅ Poles visor</li>
-          <li>✅ Anti-bacterial spray</li>
-        </ul>
-      </div>
-    </div>
-
-    <p class="text-center text-slate-400 text-xs mt-8">*Harga dapat berubah. Konfirmasi final via WhatsApp. Antar-jemput gratis area sekitar ±5 km.</p>
-  </div>
-</section>
-
-<!-- ===== HOW IT WORKS ===== -->
-<section class="py-20 bg-white" id="how">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="text-center mb-14">
-      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest">Cara Kerja</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mt-2">Semudah 3 Langkah</h2>
-      <p class="text-slate-400 mt-3 max-w-xl mx-auto">Tidak perlu keluar rumah. Kami yang urus dari awal sampai akhir.</p>
-    </div>
-
-    <div class="grid sm:grid-cols-3 gap-8 relative">
-      <!-- Connector line desktop -->
-      <div class="hidden sm:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20"></div>
-
-      <!-- Step 1 -->
-      <div class="text-center relative z-10">
-        <div class="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg shadow-primary/20">📦</div>
-        <span class="inline-flex items-center justify-center w-6 h-6 bg-primary text-white text-xs font-bold rounded-full mb-3">1</span>
-        <h3 class="font-bold text-slate-800 text-lg mb-2">Pisahkan &amp; Pesan</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Pisahkan cucianmu lalu hubungi kami via WhatsApp untuk booking jadwal jemput. Gampang!</p>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="text-center relative z-10">
-        <div class="w-20 h-20 bg-accent rounded-3xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg shadow-accent/20">🚗</div>
-        <span class="inline-flex items-center justify-center w-6 h-6 bg-accent text-white text-xs font-bold rounded-full mb-3">2</span>
-        <h3 class="font-bold text-slate-800 text-lg mb-2">Kami Jemput &amp; Cuci</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Tim kami jemput tepat waktu, lalu cuci dengan standar kebersihan tinggi dan detergen premium.</p>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="text-center relative z-10">
-        <div class="w-20 h-20 bg-highlight rounded-3xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg shadow-orange-200">✨</div>
-        <span class="inline-flex items-center justify-center w-6 h-6 bg-highlight text-white text-xs font-bold rounded-full mb-3">3</span>
-        <h3 class="font-bold text-slate-800 text-lg mb-2">Antar Kembali Bersih</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">Pakaian bersih, wangi, dan rapi diantar kembali ke pintu rumahmu. Tracking status via WhatsApp!</p>
-      </div>
-    </div>
-
-    <div class="text-center mt-12">
-      <a href="https://wa.me/6281234567890?text=Halo+CUCINIH%2C+saya+mau+pesan+laundry"
-         target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold px-8 py-3.5 rounded-xl transition-colors shadow-lg shadow-primary/20 text-sm">
-        Mulai Pesan Sekarang →
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PROMO CTA ===== -->
-<section class="py-20 bg-gradient-to-br from-primary to-primary-dark" id="promo">
-  <div class="max-w-5xl mx-auto px-5 lg:px-8 text-center">
-    <span class="inline-block bg-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5">🎉 Grand Launching Exclusive</span>
-    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Diskon 30% untuk<br class="sm:hidden"/> 50 Pelanggan Pertama!</h2>
-    <p class="text-blue-100 text-lg mb-10 max-w-xl mx-auto">Daftarkan dirimu sekarang, dapatkan akses prioritas dan harga spesial yang tidak akan tersedia setelah grand launching.</p>
-
-    <div class="grid grid-cols-3 gap-4 mb-10 max-w-lg mx-auto">
-      <div class="bg-white/10 border border-white/20 rounded-2xl p-5 text-white">
-        <div class="text-3xl font-extrabold">30%</div>
-        <div class="text-xs text-blue-200 mt-1">Diskon semua layanan</div>
-      </div>
-      <div class="bg-white/10 border border-white/20 rounded-2xl p-5 text-white">
-        <div class="text-3xl font-extrabold">FREE</div>
-        <div class="text-xs text-blue-200 mt-1">Antar-jemput pertama</div>
-      </div>
-      <div class="bg-white/10 border border-white/20 rounded-2xl p-5 text-white">
-        <div class="text-3xl font-extrabold">50</div>
-        <div class="text-xs text-blue-200 mt-1">Slot tersisa</div>
-      </div>
-    </div>
-
-    <a href="https://wa.me/6281234567890?text=Halo+CUCINIH%2C+saya+mau+klaim+promo+grand+launching"
-       target="_blank" rel="noopener"
-       class="inline-flex items-center gap-2 bg-highlight hover:bg-orange-500 text-white font-extrabold px-8 py-4 rounded-xl text-base transition-colors shadow-xl shadow-orange-900/30">
-      🎁 Klaim Promo Sekarang
-    </a>
-    <p class="text-blue-200/60 text-xs mt-4">*Promo berlaku terbatas. Hubungi via WhatsApp untuk klaim.</p>
-  </div>
-</section>
-
-<!-- ===== TESTIMONIALS ===== -->
-<section class="py-20 bg-surface" id="testimoni">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="text-center mb-14">
-      <span class="inline-block text-primary font-semibold text-xs uppercase tracking-widest">Testimoni</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mt-2">Kata Mereka yang Sudah Coba</h2>
-      <p class="text-slate-400 mt-3">Dari beta tester awal kami — cerita nyata, hasil nyata.</p>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- Testi 1 -->
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
-        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★★</div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Akhirnya nemu laundry yang tepat waktu dan hasilnya beneran bersih. Baju putih saya yang udah menguning jadi cerah lagi. Recommended banget!"</p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm shrink-0">RA</div>
-          <div>
-            <p class="font-semibold text-slate-800 text-sm">Rania A.</p>
-            <p class="text-xs text-slate-400">Mahasiswa, Bandung</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testi 2 -->
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
-        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★★</div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Paket cuci sepatunya keren banget. Sneakers saya yang udah lusuh balik kayak baru. Harga juga masuk akal buat kualitas segitu."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm shrink-0">BP</div>
-          <div>
-            <p class="font-semibold text-slate-800 text-sm">Budi P.</p>
-            <p class="text-xs text-slate-400">Pekerja Kantoran, Jakarta</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testi 3 -->
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
-        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★★</div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Jemput tepat waktu, diantar juga cepat. Tracking via WA bikin tenang karena tahu status cucian tanpa harus telepon. Cocok buat keluarga sibuk!"</p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-highlight/20 flex items-center justify-center font-bold text-highlight text-sm shrink-0">SW</div>
-          <div>
-            <p class="font-semibold text-slate-800 text-sm">Sari W.</p>
-            <p class="text-xs text-slate-400">Ibu Rumah Tangga, Depok</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testi 4 -->
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
-        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★☆</div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Awalnya skeptis sama laundry baru, tapi hasilnya memuaskan. Helm saya yang baunya udah 'vintage' sekarang wangi lagi haha. Pasti balik lagi!"</p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm shrink-0">DK</div>
-          <div>
-            <p class="font-semibold text-slate-800 text-sm">Dimas K.</p>
-            <p class="text-xs text-slate-400">Kurir Freelance, Bandung</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testi 5 -->
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
-        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★★</div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Detergennya beneran ramah lingkungan, saya yang alergi detergen biasa akhirnya bisa pakai laundry tanpa kulit gatal. Big plus!"</p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent text-sm shrink-0">NF</div>
-          <div>
-            <p class="font-semibold text-slate-800 text-sm">Nadia F.</p>
-            <p class="text-xs text-slate-400">Mahasiswa, Surabaya</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testi 6 -->
-      <div class="card-lift bg-white border border-slate-100 rounded-2xl p-6 flex flex-col">
-        <div class="flex gap-0.5 text-yellow-400 text-sm mb-4">★★★★★</div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-5">"Tas kulit saya yang terkena tumpahan kopi berhasil diselamatkan. Keren banget hasilnya. Pelayanan ramah dan komunikasinya sangat responsif."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-highlight/20 flex items-center justify-center font-bold text-highlight text-sm shrink-0">MR</div>
-          <div>
-            <p class="font-semibold text-slate-800 text-sm">Maya R.</p>
-            <p class="text-xs text-slate-400">Pengusaha, Tangerang</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Rating Summary -->
-    <div class="mt-12 bg-white border border-slate-100 rounded-2xl p-6 max-w-xs mx-auto text-center card-lift">
-      <div class="text-5xl font-extrabold text-primary mb-1">4.9</div>
-      <div class="flex justify-center gap-0.5 text-yellow-400 text-xl mb-2">★★★★★</div>
-      <p class="text-slate-400 text-sm">Berdasarkan 200+ ulasan beta tester</p>
-    </div>
-
   </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="bg-slate-900 text-slate-400" id="contact">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
-      <!-- Brand -->
-      <div>
-        <a href="#" class="flex items-center gap-2 font-extrabold text-xl text-white mb-3 select-none">
-          <span class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-sm">✦</span>
-          CUCI<span class="text-primary">NIH</span>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="ft-brand">
+        <img src="FULL LOGO.png" alt="CUCINIH" />
+        <p>Weekend Santai, Cucian Tetap Aman.<br/>Laundry subscription antar-jemput, segera hadir di BSD.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Kontak</h4>
+        <a href="https://wa.me/0" target="_blank" rel="noopener" class="wa-link">
+          <img src="Kontak.png" alt="" style="width:22px;height:22px;object-fit:contain;" /> WhatsApp CUCINIH
         </a>
-        <p class="text-sm leading-relaxed mb-5">Laundry modern yang bersih, wangi, dan tepat waktu. Untuk mahasiswa, pekerja, dan keluarga muda.</p>
-        <div class="flex gap-2">
-          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-primary flex items-center justify-center text-sm transition-colors">📸</a>
-          <a href="#" aria-label="TikTok"    class="w-9 h-9 rounded-lg bg-white/10 hover:bg-primary flex items-center justify-center text-sm transition-colors">🎵</a>
-          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" aria-label="WhatsApp"
-             class="w-9 h-9 rounded-lg bg-white/10 hover:bg-primary flex items-center justify-center text-sm transition-colors">💬</a>
-        </div>
+        <p>Senin &ndash; Minggu<br/>08.00 &ndash; 20.00 WIB</p>
       </div>
-
-      <!-- Navigasi -->
-      <div>
-        <h4 class="text-white font-semibold mb-4">Navigasi</h4>
-        <ul class="flex flex-col gap-2 text-sm">
-          <li><a href="#why"       class="hover:text-primary transition-colors">Keunggulan</a></li>
-          <li><a href="#services"  class="hover:text-primary transition-colors">Layanan &amp; Harga</a></li>
-          <li><a href="#how"       class="hover:text-primary transition-colors">Cara Kerja</a></li>
-          <li><a href="#promo"     class="hover:text-primary transition-colors">Promo Launching</a></li>
-          <li><a href="#testimoni" class="hover:text-primary transition-colors">Testimoni</a></li>
-        </ul>
+      <div class="ft-col">
+        <h4>Ikuti Kami</h4>
+        <a href="https://www.instagram.com/cucinih_" target="_blank" rel="noopener">&#64;cucinih_ di Instagram</a>
+        <a href="https://www.facebook.com/cucinih" target="_blank" rel="noopener">CUCINIH di Facebook</a>
+        <a href="#" id="openPrivacyFt" class="priv-link" style="margin-top:10px;">Kebijakan Privasi</a>
       </div>
-
-      <!-- Kontak -->
-      <div>
-        <h4 class="text-white font-semibold mb-4">Kontak</h4>
-        <ul class="flex flex-col gap-3 text-sm">
-          <li class="flex items-start gap-2">
-            <span class="mt-0.5">💬</span>
-            <div>
-              <p class="text-white font-medium text-xs mb-0.5">WhatsApp</p>
-              <!-- GANTI: isi nomor WhatsApp asli -->
-              <a href="https://wa.me/6281234567890" class="hover:text-primary transition-colors">+62 812-3456-7890</a>
-            </div>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="mt-0.5">📍</span>
-            <div>
-              <p class="text-white font-medium text-xs mb-0.5">Alamat</p>
-              <!-- GANTI: isi alamat asli -->
-              <p>Jl. Contoh No. 1, Bandung,<br/>Jawa Barat 40123</p>
-            </div>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="mt-0.5">🕐</span>
-            <div>
-              <p class="text-white font-medium text-xs mb-0.5">Jam Operasional</p>
-              <!-- GANTI: sesuaikan jam operasional -->
-              <p>Senin – Sabtu: 07.00 – 21.00<br/>Minggu: 08.00 – 18.00</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <!-- CTA Card -->
-      <div>
-        <h4 class="text-white font-semibold mb-4">Mulai Sekarang</h4>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
-          <p class="text-sm text-slate-300 mb-4">Jangan lewatkan promo grand launching! Hubungi kami sekarang.</p>
-          <a href="https://wa.me/6281234567890?text=Halo+CUCINIH%2C+saya+mau+tanya+promo+launching"
-             target="_blank" rel="noopener"
-             class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition-colors w-full">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.859L.054 23.448a.75.75 0 00.91.908l5.67-1.47A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.708 9.708 0 01-4.95-1.354l-.355-.21-3.664.95.974-3.559-.231-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-            Chat WhatsApp
-          </a>
-        </div>
-      </div>
-
     </div>
-  </div>
-
-  <!-- Bottom bar -->
-  <div class="border-t border-white/5 py-5">
-    <div class="max-w-7xl mx-auto px-5 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
-      <!-- GANTI: tahun dan nama bisnis sesuai kebutuhan -->
-      <p>© 2025 CUCINIH. Semua hak dilindungi.</p>
-      <p>Dibuat dengan ❤️ untuk laundry yang lebih baik.</p>
-    </div>
+    <hr class="ft-hr" />
+    <p class="ft-copy">&copy; 2025 CUCINIH. Semua hak cipta dilindungi. &nbsp;|&nbsp; <a href="#" id="openPrivacyFt2" class="priv-link">Kebijakan Privasi</a></p>
   </div>
 </footer>
 
-<!-- ===== JAVASCRIPT ===== -->
+<!-- ===== MODAL: PRIVACY POLICY ===== -->
+<div class="modal-ov" id="privModal" role="dialog" aria-modal="true" aria-labelledby="privTitle">
+  <div class="modal-box">
+    <button class="modal-x" id="closePriv" aria-label="Tutup">&times;</button>
+    <h2 id="privTitle">&#128274; Kebijakan Privasi CUCINIH</h2>
+    <p><em>Berlaku sejak 2025. Terakhir diperbarui: 2025.</em></p>
+    <h3>1. Data yang Kami Kumpulkan</h3>
+    <p>Melalui formulir ini, kami hanya mengumpulkan: nama lengkap dan username Instagram.</p>
+    <h3>2. Tujuan Penggunaan Data</h3>
+    <ul><li>Menghubungimu via DM Instagram untuk konfirmasi dan pengiriman kode voucher Rp100.000.</li><li>Memberitahukanmu saat CUCINIH resmi launching di area BSD.</li><li>Mengirimkan informasi promo dan penawaran eksklusif yang relevan.</li></ul>
+    <h3>3. Keamanan Data</h3>
+    <p>Data kamu kami jaga dengan standar keamanan yang wajar. Data tidak akan dijual, disewakan, atau dibagikan kepada pihak ketiga tanpa persetujuanmu, kecuali diwajibkan oleh hukum.</p>
+    <h3>4. Retensi Data</h3>
+    <p>Data disimpan selama diperlukan untuk keperluan program voucher dan komunikasi pelanggan awal. Kamu bisa meminta penghapusan data kapan saja.</p>
+    <h3>5. Hak Kamu</h3>
+    <p>Kamu berhak mengakses, mengoreksi, atau meminta penghapusan data pribadimu dengan menghubungi kami via DM Instagram <strong>@cucinih_</strong> atau WhatsApp.</p>
+    <h3>6. Perubahan Kebijakan</h3>
+    <p>Kebijakan ini dapat diperbarui sewaktu-waktu. Perubahan signifikan akan dikomunikasikan melalui media sosial CUCINIH.</p>
+    <h3>7. Hubungi Kami</h3>
+    <p>Pertanyaan seputar privasi? Hubungi kami via Instagram <strong>@cucinih_</strong> atau WhatsApp. Kami senang membantu.</p>
+    <button class="btn-primary" id="closePrivBtn" style="margin-top:20px;">Mengerti, Tutup</button>
+  </div>
+</div>
+
+<!-- ===== MODAL: THANK YOU ===== -->
+<div class="modal-ov" id="tyModal" role="dialog" aria-modal="true" aria-labelledby="tyTitle">
+  <div class="modal-box" style="text-align:center;">
+    <div style="font-size:3rem;margin-bottom:10px;">&#127881;</div>
+    <h2 id="tyTitle" style="color:var(--primary);margin-bottom:8px;">Hore! Kamu berhasil daftar!</h2>
+    <p style="color:var(--muted);margin-bottom:18px;">Terima kasih sudah mendaftar. Kamu akan jadi yang <strong>pertama tahu</strong> saat CUCINIH resmi launching &mdash; dan voucher <strong>Rp100.000</strong> sudah aman untukmu!</p>
+    <div class="ty-note">&#128172; Tim kami akan menghubungimu via <strong>DM Instagram</strong> untuk konfirmasi vouchermu mendekati tanggal launching. Pastikan DM Instagram kamu terbuka, ya!</div>
+    <button class="btn-primary" id="closeTy" style="margin-top:20px;">Oke, Siap! &#128170;</button>
+  </div>
+</div>
+
+<style>
+:root{--p:#0D2D4D;--s:#32C27A;--a:#85FFBC;--hl:#FFD51E;--bg:#F2F4F7;--w:#fff;--t:#1A1A2E;--m:#4A5568;--r:12px;--sh:0 4px 24px rgba(13,45,77,.12);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;font-size:16px;background:var(--bg);color:var(--t);line-height:1.6;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.25;}
+h1{font-size:clamp(1.7rem,5vw,2.7rem);}
+h2{font-size:clamp(1.35rem,4vw,2rem);}
+h3{font-size:clamp(1rem,2.5vw,1.25rem);}
+.container{width:100%;max-width:1080px;margin:0 auto;padding:0 20px;}
+section{padding:56px 0;}
+.site-header{position:sticky;top:0;z-index:200;background:var(--p);padding:0;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.25);}
+.site-header img{height:64px;width:auto;}
+.header-promo{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 20px;flex-wrap:wrap;text-align:center;}
+.header-promo-icon{font-size:1.1rem;flex-shrink:0;}
+.header-promo-text{font-size:.82rem;color:rgba(255,255,255,.92);line-height:1.4;}
+.header-promo-text strong{color:var(--hl);}
+.header-promo-cta{background:var(--hl);color:var(--p);font-weight:700;font-size:.78rem;padding:6px 14px;border-radius:50px;white-space:nowrap;flex-shrink:0;transition:transform .2s;}
+.header-promo-cta:hover{transform:scale(1.05);}
+.badge-urgency{display:inline-block;background:var(--hl);color:var(--p);font-weight:700;font-size:.76rem;padding:6px 16px;border-radius:50px;letter-spacing:.4px;text-transform:uppercase;}
+.tag{display:inline-block;background:var(--a);color:var(--p);font-size:.76rem;font-weight:700;padding:4px 14px;border-radius:50px;margin-bottom:10px;letter-spacing:.4px;}
+.sec-hd{text-align:center;margin-bottom:44px;}
+.sec-hd h2{color:var(--p);margin-bottom:10px;}
+.sec-hd p{color:var(--m);max-width:540px;margin:0 auto;font-size:.94rem;}
+</style>
+
+<style>
+/* HERO */
+#hero{background:var(--w);padding:48px 0 56px;position:relative;}
+#hero::after{display:none;}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:36px;align-items:start;}
+.hero-copy{background:var(--p);background-image:url('laundry_background_4.jpg');background-size:cover;background-position:center;background-blend-mode:multiply;border-radius:20px;padding:32px 28px;position:relative;overflow:hidden;}
+.hero-copy::after{content:'';position:absolute;inset:0;background:linear-gradient(155deg,rgba(13,45,77,.92) 50%,rgba(13,45,77,.7));pointer-events:none;border-radius:20px;}
+.hero-copy>*{position:relative;z-index:1;}
+.hero-copy .badge-urgency{margin-bottom:14px;}
+.hero-copy h1{color:var(--w);margin-bottom:14px;}.hl{color:var(--hl);}
+.subhead{font-size:.98rem;color:rgba(255,255,255,.88);margin-bottom:22px;line-height:1.75;}
+.hero-img{display:none;justify-content:center;align-items:center;}
+.hero-img img{max-width:320px;mix-blend-mode:multiply;background:transparent;}
+/* FORM CARD */
+.lead-card{background:var(--w);border-radius:18px;padding:26px 22px;box-shadow:0 8px 40px rgba(0,0,0,.22);}
+.lead-card h3{color:var(--p);font-size:1.1rem;margin-bottom:4px;}
+.form-sub{font-size:.83rem;color:var(--m);margin-bottom:16px;}
+.fg{margin-bottom:13px;}
+.fg label{display:block;font-size:.83rem;font-weight:600;color:var(--p);margin-bottom:5px;}
+.fg input{width:100%;padding:12px 14px;border:1.5px solid #D1D5DB;border-radius:var(--r);font-family:'Poppins',sans-serif;font-size:1rem;color:var(--t);outline:none;transition:border-color .2s;}
+.fg input:focus{border-color:var(--s);}
+.fg input::placeholder{color:#A0AEC0;}
+.ig-wrap{position:relative;display:flex;align-items:center;}
+.ig-at{position:absolute;left:13px;font-weight:700;color:var(--m);z-index:1;}
+.ig-wrap input{padding-left:28px;}
+.cb-wrap{display:flex;align-items:flex-start;gap:10px;margin-bottom:17px;}
+.cb-wrap input{width:18px;height:18px;min-width:18px;margin-top:3px;accent-color:var(--s);cursor:pointer;}
+.cb-wrap label{font-size:.81rem;color:var(--m);line-height:1.55;cursor:pointer;}
+.cb-wrap label a{color:var(--s);font-weight:600;text-decoration:underline;}
+.btn-primary{display:block;width:100%;background:var(--hl);color:var(--p);font-family:'Poppins',sans-serif;font-weight:700;font-size:.98rem;padding:14px 20px;border-radius:50px;border:none;cursor:pointer;text-align:center;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(255,213,30,.4);}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,213,30,.55);}
+.btn-primary:disabled{opacity:.42;cursor:not-allowed;}
+</style>
+
+<style>
+/* USP */
+#usp{background:var(--w);}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.card-feat{background:var(--bg);border-radius:var(--r);padding:20px 14px;text-align:center;transition:transform .2s,box-shadow .2s;}
+.card-feat:hover{transform:translateY(-4px);box-shadow:var(--sh);}
+.card-feat img{width:78px;height:78px;object-fit:contain;margin:0 auto 11px;}
+.card-feat h3{font-size:.92rem;color:var(--p);margin-bottom:5px;}
+.card-feat p{font-size:.8rem;color:var(--m);}
+/* CARA KERJA */
+#cara-kerja{background:var(--bg);}
+.card-step{background:var(--w);border-radius:var(--r);padding:26px 14px 18px;text-align:center;position:relative;box-shadow:0 2px 10px rgba(13,45,77,.07);}
+.step-no{position:absolute;top:-13px;left:50%;transform:translateX(-50%);width:28px;height:28px;border-radius:50%;background:var(--s);color:var(--w);font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;}
+.card-step img{width:86px;height:86px;object-fit:contain;margin:4px auto 11px;}
+.card-step h3{font-size:.9rem;color:var(--p);margin-bottom:5px;}
+.card-step p{font-size:.79rem;color:var(--m);}
+/* PAKET */
+#paket{background:var(--p);}
+#paket .sec-hd h2{color:var(--w);}
+#paket .sec-hd p{color:rgba(255,255,255,.72);}
+#paket .tag{background:var(--a);}
+.pricing-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:22px;}
+.pkg-card{background:var(--w);border-radius:16px;padding:24px 20px;text-align:center;position:relative;box-shadow:0 4px 22px rgba(0,0,0,.18);transition:transform .2s;}
+.pkg-card:hover{transform:translateY(-4px);}
+.pkg-card.popular{border:3px solid var(--hl);}
+.pop-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--hl);color:var(--p);font-size:.7rem;font-weight:700;padding:3px 14px;border-radius:50px;white-space:nowrap;}
+.pkg-img{width:68px;height:68px;object-fit:contain;margin:0 auto 11px;}
+.pkg-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--p);margin-bottom:2px;}
+.pkg-sub{font-size:.8rem;color:var(--m);margin-bottom:10px;}
+.pkg-price{font-size:1.7rem;font-weight:700;color:var(--p);}
+.pkg-price span{font-size:.82rem;font-weight:400;color:var(--m);}
+.pkg-quota{font-size:.8rem;color:var(--m);margin-bottom:12px;}
+.pkg-list{list-style:none;text-align:left;}
+.pkg-list li{font-size:.81rem;color:var(--m);padding:4px 0;display:flex;align-items:center;gap:7px;}
+.pkg-list li::before{content:'✓';color:var(--s);font-weight:700;flex-shrink:0;}
+.addon-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:18px 20px;}
+.addon-box h3{font-size:.95rem;color:var(--w);font-family:'Poppins',sans-serif;font-weight:700;margin-bottom:5px;}
+.addon-box p{font-size:.83rem;color:rgba(255,255,255,.65);margin-bottom:13px;}
+.addon-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.addon-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:var(--w);font-size:.79rem;padding:5px 11px;border-radius:50px;display:flex;align-items:center;gap:6px;}
+.cs-chip{background:var(--hl);color:var(--p);font-size:.63rem;font-weight:700;padding:2px 6px;border-radius:50px;}
+</style>
+
+<style>
+/* AREA */
+#area{background:var(--w);}
+.area-wrap{display:grid;grid-template-columns:1fr;gap:26px;align-items:start;}
+.area-map{background:linear-gradient(135deg,var(--p),#1a4a7a);border-radius:16px;padding:34px 20px;color:var(--w);text-align:center;}
+.area-map h3{color:var(--w);margin-bottom:7px;}
+.area-map p{color:rgba(255,255,255,.78);font-size:.88rem;}
+.area-list{list-style:none;}
+.area-list li{padding:10px 0;border-bottom:1px solid #E5E7EB;font-size:.9rem;display:flex;align-items:center;gap:9px;}
+.area-list li:last-child{border-bottom:none;}
+.area-list li::before{content:'';width:9px;height:9px;min-width:9px;border-radius:50%;background:var(--s);}
+.area-note{margin-top:13px;background:var(--bg);border-radius:var(--r);padding:12px 14px;font-size:.81rem;color:var(--m);border-left:3px solid var(--s);}
+/* FAQ */
+#faq{background:var(--bg);}
+.faq-list{display:flex;flex-direction:column;gap:9px;max-width:700px;margin:0 auto;}
+.faq-item{background:var(--w);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 8px rgba(13,45,77,.06);}
+.faq-q{width:100%;background:none;border:none;padding:16px 17px;font-family:'Poppins',sans-serif;font-size:.91rem;font-weight:600;color:var(--p);text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.fi{min-width:24px;width:24px;height:24px;background:var(--s);border-radius:50%;color:var(--w);font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:transform .3s;font-style:normal;flex-shrink:0;line-height:1;}
+.faq-item.open .fi{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-ai{padding:0 17px 15px;font-size:.86rem;color:var(--m);line-height:1.75;}
+/* SOSMED */
+#sosmed{background:var(--w);}
+.sosmed-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
+.sosmed-cards{display:flex;gap:13px;flex-wrap:wrap;justify-content:center;}
+.sosmed-card{display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:var(--r);padding:13px 20px;min-width:185px;text-decoration:none;transition:transform .2s,box-shadow .2s;border:2px solid transparent;}
+.sosmed-card:hover{transform:translateY(-3px);box-shadow:var(--sh);border-color:var(--s);}
+.sm-info .sm-plat{font-size:.73rem;color:var(--m);}
+.sm-info .sm-handle{font-weight:700;color:var(--p);font-size:.9rem;}
+.sosmed-note{font-size:.86rem;color:var(--m);text-align:center;}
+/* CTA BOTTOM */
+#cta-btm{background:linear-gradient(135deg,var(--s),#228c5a);padding:54px 0;}
+.cta-inner{text-align:center;color:var(--w);}
+.cta-inner h2{color:var(--w);margin-bottom:10px;}
+.cta-inner>p{color:rgba(255,255,255,.9);margin-bottom:24px;font-size:.96rem;max-width:520px;margin-left:auto;margin-right:auto;margin-top:0;}
+.btn-cta{display:inline-block;background:var(--hl);color:var(--p);font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;padding:16px 34px;border-radius:50px;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.2);transition:transform .2s,box-shadow .2s;}
+.btn-cta:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(0,0,0,.25);}
+.quota-note{margin-top:12px;font-size:.83rem;color:rgba(255,255,255,.78);}
+.quota-note strong{color:var(--hl);}
+/* FOOTER */
+footer{background:var(--w);padding:38px 0 20px;color:var(--m);border-top:1px solid #E5E7EB;}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:26px;}
+.ft-brand img{height:120px;width:auto;margin-bottom:9px;}
+.ft-brand p{font-size:.82rem;line-height:1.7;color:var(--m);}
+.ft-col h4{color:var(--p);font-size:.91rem;font-weight:700;margin-bottom:9px;}
+.ft-col p,.ft-col a{font-size:.82rem;color:var(--m);display:block;margin-bottom:6px;}
+.ft-col a:hover{color:var(--s);}
+.wa-link{display:flex!important;align-items:center;gap:8px;color:var(--s)!important;font-weight:600;}
+.ft-hr{border:none;border-top:1px solid #E5E7EB;margin-bottom:16px;}
+.ft-copy{text-align:center;font-size:.77rem;color:#9CA3AF;}
+.priv-link{color:var(--s);text-decoration:underline;cursor:pointer;}
+/* MODALS */
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.56);z-index:1000;align-items:center;justify-content:center;padding:16px;}
+.modal-ov.active{display:flex;}
+.modal-box{background:var(--w);border-radius:18px;padding:28px 24px;max-width:460px;width:100%;max-height:88vh;overflow-y:auto;position:relative;animation:mIn .28s ease;}
+@keyframes mIn{from{opacity:0;transform:scale(.93) translateY(12px);}to{opacity:1;transform:none;}}
+.modal-x{position:absolute;top:13px;right:13px;background:var(--bg);border:none;width:30px;height:30px;border-radius:50%;font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t);}
+.modal-x:hover{background:#E5E7EB;}
+.modal-box h2{font-size:1.2rem;color:var(--p);margin-bottom:11px;}
+.modal-box h3{font-size:.93rem;color:var(--p);margin:13px 0 4px;}
+.modal-box p,.modal-box li{font-size:.84rem;color:var(--m);line-height:1.75;margin-bottom:7px;}
+.modal-box ul{padding-left:17px;}
+.ty-note{background:var(--bg);border-radius:var(--r);padding:12px 14px;font-size:.83rem;color:var(--m);text-align:center;border-left:3px solid var(--s);}
+/* RESPONSIVE */
+@media(min-width:560px){.pricing-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:768px){
+  .hero-inner{grid-template-columns:1fr 1fr;gap:48px;}
+  .hero-img{display:flex;}
+  .hero-img img{max-width:380px;mix-blend-mode:multiply;}
+  .grid4{grid-template-columns:repeat(4,1fr);}
+  .pricing-grid{grid-template-columns:repeat(3,1fr);}
+  .area-wrap{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1.5fr 1fr 1fr;}
+}
+@media(max-width:400px){.grid4{grid-template-columns:1fr;}}
+</style>
+
 <script>
-  // ── Hamburger Menu ──
-  const menuBtn   = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const iconOpen  = document.getElementById('iconOpen');
-  const iconClose = document.getElementById('iconClose');
+// Checkbox toggle
+const agreeBox = document.getElementById('agree');
+const submitBtn = document.getElementById('submitBtn');
+agreeBox.addEventListener('change', () => { submitBtn.disabled = !agreeBox.checked; });
 
-  function closeNav() {
-    mobileMenu.classList.add('hidden');
-    iconOpen.classList.remove('hidden');
-    iconClose.classList.add('hidden');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  }
-
-  menuBtn.addEventListener('click', () => {
-    const isOpen = !mobileMenu.classList.contains('hidden');
-    if (isOpen) {
-      closeNav();
-    } else {
-      mobileMenu.classList.remove('hidden');
-      iconOpen.classList.add('hidden');
-      iconClose.classList.remove('hidden');
-      menuBtn.setAttribute('aria-expanded', 'true');
-    }
+// Form submit
+document.getElementById('leadForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const nama = document.getElementById('nama').value.trim();
+  const ig   = document.getElementById('ig').value.trim();
+  if (!nama || !ig) return;
+  // Ganti URL_APPS_SCRIPT_DI_SINI dengan URL dari hasil Deploy Apps Script
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxs2n54c9ntw6flTCKS9REw1uVDmeK3MU2MEq0WV5Q08G1l3eF_xda_WAbhXQ7YtLFyvg/exec';
+  var formData = new FormData();
+  formData.append('nama', nama);
+  formData.append('instagram', ig);
+  fetch(ENDPOINT, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  }).catch(function() {
+    // silent fail — thank you modal tetap muncul
   });
+  openModal('tyModal');
+  this.reset();
+  submitBtn.disabled = true;
+});
 
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-      closeNav();
-    }
-  });
+// Modal helpers
+function openModal(id) {
+  const m = document.getElementById(id);
+  m.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  const first = m.querySelector('button, [href], input');
+  if (first) setTimeout(() => first.focus(), 50);
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-  // ── Navbar shadow on scroll ──
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('shadow-md', window.scrollY > 10);
-  });
+// Close on backdrop click
+document.querySelectorAll('.modal-ov').forEach(ov => {
+  ov.addEventListener('click', function(e) { if (e.target === this) closeModal(this.id); });
+});
 
-  // ── Countdown Timer ──
-  // GANTI: tanggal launching (YYYY-MM-DDTHH:MM:SS)
-  const LAUNCH_DATE = new Date('2025-09-01T08:00:00');
+// Privacy triggers
+['openPrivacy','openPrivacyFt','openPrivacyFt2'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', e => { e.preventDefault(); openModal('privModal'); });
+});
 
-  function updateCountdown() {
-    const diff = LAUNCH_DATE - new Date();
-    if (diff <= 0) {
-      ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(id => {
-        document.getElementById(id).textContent = '00';
-      });
-      return;
-    }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent    = String(d).padStart(2,'0');
-    document.getElementById('cd-hours').textContent   = String(h).padStart(2,'0');
-    document.getElementById('cd-minutes').textContent = String(m).padStart(2,'0');
-    document.getElementById('cd-seconds').textContent = String(s).padStart(2,'0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+// Close buttons
+document.getElementById('closePriv').addEventListener('click', () => closeModal('privModal'));
+document.getElementById('closePrivBtn').addEventListener('click', () => closeModal('privModal'));
+document.getElementById('closeTy').addEventListener('click', () => closeModal('tyModal'));
 
-  // ── Service Tabs ──
-  function showTab(tabId) {
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => {
-      b.classList.remove('active','text-primary','border-primary','bg-primary/6');
-      b.classList.add('text-slate-500','border-slate-200');
+// ESC key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal('privModal'); closeModal('tyModal'); }
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const item = this.closest('.faq-item');
+    const ans  = item.querySelector('.faq-a');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      i.querySelector('.faq-a').style.maxHeight = '0';
     });
-    document.getElementById('panel-' + tabId).classList.add('active');
-    const btn = document.getElementById('tab-' + tabId);
-    btn.classList.add('active','text-primary','border-primary','bg-primary/6');
-    btn.classList.remove('text-slate-500','border-slate-200');
-  }
-
-  // ── Scroll-reveal animation ──
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.card-lift').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity .5s ease, transform .5s ease';
-    revealObserver.observe(el);
+    if (!isOpen) {
+      item.classList.add('open');
+      this.setAttribute('aria-expanded', 'true');
+      ans.style.maxHeight = ans.scrollHeight + 'px';
+    }
   });
+});
+
+// CTA bottom scroll to form
+document.querySelector('#cta-btm .btn-cta').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('nama').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => document.getElementById('nama').focus(), 400);
+});
 </script>
 </body>
 </html>
