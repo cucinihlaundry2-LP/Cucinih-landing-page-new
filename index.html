@@ -38,7 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCBGB76K"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<!-- ===== STICKY HEADER ===== -->
+<!-- ===== STICKY HEADER (DINONAKTIFKAN) =====
 <header class="site-header">
   <div class="header-promo">
     <span class="header-promo-icon">&#127881;</span>
@@ -47,6 +47,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#hero" class="header-promo-cta" onclick="event.preventDefault();document.getElementById('nama').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('nama').focus(),400);">Klaim Voucher Saya</a>
   </div>
 </header>
+===== END STICKY HEADER ===== -->
 
 <!-- ===== HERO / ATF ===== -->
 <section id="hero">
@@ -55,15 +56,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- LEFT SIDE -->
       <div class="hero-left">
-        <div class="hero-logo">
-          <img src="asset/logo.webp" alt="CUCINIH Logo" />
+        <div class="hero-logo" style="padding-bottom: 20px;">
+          <img src="assets/14.png" alt="CUCINIH Logo" />
         </div>
-        <h1 class="hero-headline">Laundry Praktis,<br/><span class="hl-green">Antar Jemput</span></h1>
-        <div class="hero-badge-coming">
+        <h1 class="hero-headline" id="heroHeadline"><span id="heroHeadlineText">Laundry Praktis,<br/><span class="hl-green">Antar Jemput</span></span></h1>
+        <!-- <div class="hero-badge-coming">
           <span class="coming-icon">&#128197;</span>
-          <span>COMING SOON</span>
-        </div>
-        <p class="hero-desc">CUCINIH menyediakan layanan laundry antar jemput untuk membantu kebutuhan cuci, setrika, sampai melipat pakaian Anda di area BSD dan sekitarnya. </p>
+          <span>Coming Soon</span>
+        </div> -->
+        <p class="voucher-note">CUCINIH menyediakan layanan laundry antar jemput untuk membantu kebutuhan cuci, setrika, sampai melipat pakaian Anda di area BSD dan sekitarnya. </p><br>
         <!-- ENHANCED VOUCHER BOX -->
         <div class="hero-voucher-enhanced">
           <div class="voucher-glow"></div>
@@ -286,22 +287,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="grid4">
       <div class="card-feat">
-        <img src="asset/Delivery.webp" alt="Layanan laundry antar jemput CUCINIH" loading="lazy" />
+        <img src="assets/1.png" alt="Layanan laundry antar jemput CUCINIH" loading="lazy" />
         <h3>Jemput-Antar Langsung</h3>
         <p>Jadwal pickup terjadwal, Anda tidak perlu repot keluar rumah. Kami yang datang.</p>
       </div>
       <div class="card-feat">
-        <img src="asset/Detergent.webp" alt="Deterjen aman" loading="lazy" />
+        <img src="assets/2.png" alt="Deterjen aman" loading="lazy" />
         <h3>Deterjen Dijamin Aman</h3>
         <p>Formula lembut, aman untuk kulit sensitif dan pakaian untuk si kecil.</p>
       </div>
       <div class="card-feat">
-        <img src="asset/cuci-setrika.webp" alt="Cuci setrika lipat" loading="lazy" />
+        <img src="assets/3.png" alt="Cuci setrika lipat" loading="lazy" />
         <h3>Cuci &ndash; Setrika &ndash; Lipat Rapi</h3>
         <p>Pakaian bersih, wangi, dan sudah dilipat rapi. Siap langsung masuk lemari.</p>
       </div>
       <div class="card-feat">
-        <img src="asset/service.webp" alt="Harga transparan" loading="lazy" />
+        <img src="assets/4.png" alt="Harga transparan" loading="lazy" />
         <h3>Transparan, Tanpa Kejutan</h3>
         <p>Tersedia paket laundry bulanan dengan kuota jelas. Tidak ada biaya tersembunyi.</p>
       </div>
@@ -320,25 +321,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="grid4">
       <div class="card-step">
         <div class="step-no">1</div>
-        <img src="asset/Keranjang Laundry.webp" alt="Paket dan harga laundry CUCINIH" loading="lazy" />
+        <img src="assets/5.png" alt="Paket dan harga laundry CUCINIH" loading="lazy" />
         <h3>Daftar &amp; Pilih Paket</h3>
         <p>Pilih paket bulanan yang sesuai kebutuhan keluargamu.</p>
       </div>
       <div class="card-step">
         <div class="step-no">2</div>
-        <img src="asset/Motor (Pickup).webp" alt="Penjemputan laundry CUCINIH di BSD" loading="lazy" />
+        <img src="assets/6.png" alt="Penjemputan laundry CUCINIH di BSD" loading="lazy" />
         <h3>Jadwalkan Antar Jemput</h3>
         <p>Tentukan waktu penjemputan laundry, lalu driver CUCINIH akan datang ke lokasi Anda.</p>
       </div>
       <div class="card-step">
         <div class="step-no">3</div>
-        <img src="asset/Washing Machine.webp" alt="Proses jasa laundry cuci setrika lipat" loading="lazy" />
+        <img src="assets/7.png" alt="Proses jasa laundry cuci setrika lipat" loading="lazy" />
         <h3>Cuci, Setrika, dan Lipat</h3>
         <p>Pakaian akan diproses secara higienis, hanya ada pakaian milik Anda sendiri.</p>
       </div>
       <div class="card-step">
         <div class="step-no">4</div>
-        <img src="asset/Laundry Selesai.webp" alt="Pengantaran laundry kembali ke rumah" loading="lazy" />
+        <img src="assets/8.png" alt="Pengantaran laundry kembali ke rumah" loading="lazy" />
         <h3>Antar Balik ke Rumah</h3>
         <p>Pakaian bersih, rapi, dan wangi akan diantar kembali langsung ke rumah Anda.</p>
       </div>
@@ -446,22 +447,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="addon-grid">
         <div class="addon-card">
-          <div class="addon-card-icon"><img src="asset/bedcover.webp" alt="stroller"></div>
+          <div class="addon-card-icon"><img src="assets/9.png" alt="stroller"></div>
           <div class="addon-card-name">Bed Cover</div>
           <div class="addon-card-cs">COMING SOON</div>
         </div>
         <div class="addon-card">
-          <div class="addon-card-icon"><img src="asset/stroller.webp" alt="stroller"></div>
+          <div class="addon-card-icon"><img src="assets/10.png" alt="stroller"></div>
           <div class="addon-card-name">Stroller</div>
           <div class="addon-card-cs">COMING SOON</div>
         </div>
         <div class="addon-card">
-          <div class="addon-card-icon"><img src="asset/bag.webp" alt="stroller"></div>
+          <div class="addon-card-icon"><img src="assets/11.png" alt="stroller"></div>
           <div class="addon-card-name">Tas</div>
           <div class="addon-card-cs">COMING SOON</div>
         </div>
         <div class="addon-card">
-          <div class="addon-card-icon"><img src="asset/sepatu.webp" alt="stroller"></div>
+          <div class="addon-card-icon"><img src="asset/12.png" alt="stroller"></div>
           <div class="addon-card-name">Sepatu</div>
           <div class="addon-card-cs">COMING SOON</div>
         </div>
@@ -480,7 +481,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="area-wrap">
       <div class="area-map-img-wrap">
-        <img src="asset/map.webp" alt="Peta Area Layanan CUCINIH" class="area-map-img" />
+        <img src="assets/13.png" alt="Peta Area Layanan CUCINIH" class="area-map-img" />
         <div class="area-map-badge">
           <span class="area-map-pin">&#128205;</span>
           <span>Hub Utama: BSD City, Tangerang</span>
@@ -666,7 +667,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="modal-x" id="closePriv" aria-label="Tutup">&times;</button>
     <h2 id="privTitle">&#128274; Kebijakan Privasi CUCINIH</h2>
     <p><em>Berlaku sejak 30 Juli 2026. Terakhir diperbarui: 30 Agustus 2026.</em></p>
-    <!-- <p>Formulir ini digunakan untuk keperluan <strong>Market Testing</strong> oleh CUCINIH. Kami tidak akan membagikan informasi pribadi Anda kepada pihak lain, dengan mengacu pada prinsip perlindungan data sebagaimana diatur dalam <em>General Data Protection Regulation</em> (GDPR).</p> -->
     <h3>1. Data yang Kami Kumpulkan</h3>
     <p>Melalui formulir ini, kami mengumpulkan dua jenis data, yaitu Nama Lengkap dan Username Instagram.</p>
 
@@ -739,13 +739,6 @@ section{padding:50px 0;}
   overflow:hidden;
   isolation:isolate;
 }
-#hero{
-  background:#F8FBF8;
-  padding:40px 0 52px;
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-}
 .hero-inner{display:grid;grid-template-columns:1fr;gap:32px;align-items:flex-start;position:relative;z-index:2;}
 
 /* BACKGROUND IMAGE */
@@ -777,10 +770,29 @@ section{padding:50px 0;}
 .hero-left{display:flex;flex-direction:column;gap:0;}
 .hero-logo{margin-bottom:18px;}
 .hero-logo img{height:72px;width:auto;}
-.hero-headline{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#111;line-height:1.18;margin-bottom:20px;}
-.hl-green{color:#1DB954;display:block;}
-.hero-badge-coming{display:inline-flex;align-items:center;gap:7px;background:var(--hl);color:var(--p);font-weight:800;font-size:.78rem;padding:7px 18px;border-radius:50px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:16px;width:fit-content;}
-.coming-icon{font-size:1rem;}
+.hero-headline{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#111;line-height:1.18;margin-bottom:20px;min-height:2.4em;}
+.hero-headline #heroHeadlineText{display:inline-block;transition:opacity .45s ease, transform .45s ease;}
+.hero-headline #heroHeadlineText.hh-fade{opacity:0;transform:translateY(6px);}
+.hl-green{color:#000000;display:block;}
+
+/* BADGE COMING SOON — dibuat lebih kalem, tidak dominan */
+.hero-badge-coming{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:transparent;
+  color:#8A8F98;
+  font-weight:600;
+  font-size:.72rem;
+  padding:3px 0;
+  border-radius:0;
+  letter-spacing:.3px;
+  text-transform:none;
+  margin-bottom:16px;
+  width:fit-content;
+  border-bottom:1px dashed rgba(138,143,152,.4);
+}
+.coming-icon{font-size:.85rem;opacity:.7;}
 .hero-desc{font-size:.97rem;color:#444;line-height:1.65;margin-bottom:22px;}
 
 /* ENHANCED VOUCHER BOX */
@@ -1358,75 +1370,6 @@ section{padding:50px 0;}
 .sm-info .sm-plat{font-size:.73rem;color:var(--m);}
 .sm-info .sm-handle{font-weight:700;color:var(--p);font-size:.9rem;}
 .sosmed-note{font-size:.86rem;color:var(--m);text-align:center;}
-/* =========================
-   FACEBOOK POST SECTION
-========================= */
-
-.facebook-post-section {
-  width: 100%;
-  max-width: 720px;
-  margin: 28px auto 0;
-}
-
-.facebook-post-heading {
-  margin-bottom: 18px;
-  text-align: center;
-}
-
-.facebook-post-heading h3 {
-  margin: 0 0 6px;
-  color: var(--p);
-  font-family: "Poppins", sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.45;
-}
-
-.facebook-post-heading p {
-  max-width: 520px;
-  margin: 0 auto;
-  color: var(--m);
-  font-size: 0.82rem;
-  line-height: 1.7;
-}
-
-.facebook-feed {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(13, 45, 77, 0.1);
-  border-radius: 18px;
-  background: #ffffff;
-  box-shadow: 0 8px 28px rgba(13, 45, 77, 0.1);
-}
-
-.facebook-feed iframe {
-  display: block;
-  width: 100%;
-  max-width: 500px;
-  border: 0;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 560px) {
-  .facebook-post-section {
-    margin-top: 22px;
-  }
-
-  .facebook-feed {
-    padding: 8px;
-    border-radius: 14px;
-  }
-
-  .facebook-feed iframe {
-    width: 100%;
-    height: 560px;
-  }
-}
-
 /* CTA BOTTOM */
 #cta-btm{background:linear-gradient(135deg,var(--s),#228c5a);padding:54px 0;}
 .cta-inner{text-align:center;color:var(--w);}
@@ -1436,9 +1379,6 @@ section{padding:50px 0;}
 .btn-cta:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(0,0,0,.25);}
 .quota-note{margin-top:12px;font-size:.83rem;color:rgba(255,255,255,.78);}
 .quota-note strong{color:var(--hl);}
-/* FOOTER */
-footer{color:rgba(255,255,255,.8);}
-
 /* FOOTER */
 footer{color:rgba(255,255,255,.8);}
 
@@ -1786,6 +1726,27 @@ document.querySelector('#cta-btm .btn-cta').addEventListener('click', function(e
       if (namaField) namaField.focus(); 
     }, 400);
   });
+})();
+
+// HERO HEADLINE ROTATOR — ganti otomatis tiap 5 detik
+(function() {
+  var headlines = [
+    'Laundry Praktis,<br/><span class="hl-green">Antar Jemput</span>',
+    'Cuci Setrika Lipat,<br/><span class="hl-green">Laundry Express</span>',
+    'Paket Laundry,<br/><span class="hl-green">Voucher 100K</span>'
+  ];
+  var idx = 0;
+  var el = document.getElementById('heroHeadlineText');
+  if (!el) return;
+
+  setInterval(function() {
+    idx = (idx + 1) % headlines.length;
+    el.classList.add('hh-fade');
+    setTimeout(function() {
+      el.innerHTML = headlines[idx];
+      el.classList.remove('hh-fade');
+    }, 450);
+  }, 5000);
 })();
 </script>
 
